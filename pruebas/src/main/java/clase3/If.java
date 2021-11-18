@@ -2,40 +2,26 @@ package clase3;
 
 import java.util.Scanner;
 
-public class If {
+public class If2 {
 
 	public static void main(String[] args) {
 
 		Scanner teclado = new Scanner(System.in);
 		
-		//ingrese contraseña y usuario
-		//si contraseña = "1234" 
-		//y usuario = admin 
-		// ok
-		// de lo contrario, fail
+		//ingrese un dato y si es >= 18 imprimir mayor de edad
+		//de lo contrario indicar que es menor
+		System.out.println("Ingrese edad");
 		
-		String usuario;
-		String contrasenia;
-		
-		usuario = "jose";
-		contrasenia = "12345";
-		
-		if(usuario == "admin" && contrasenia == "1234") {
-		System.out.println("ok");
+		int edad = teclado.nextInt();
+		//dentro del parentesis va un bool
+		//es lo que se va a evaluar
+		//si se da, se ejecuta
+		if(edad >= 18) {
+			System.out.println("Mayor de edad");
 		}else {
-			System.out.println("fail");
+			System.out.println("Es menor de edad");
 		}
 		
-		//forma anidada
-		if(usuario == "admin") {
-			if(contrasenia == "1234") {
-				System.out.println("ok");
-			}else {
-				System.err.println("fail");
-			}
-		}else {
-			System.err.println("fail");
-		}
 		teclado.close();
 	}
 
