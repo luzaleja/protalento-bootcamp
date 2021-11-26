@@ -34,7 +34,7 @@ public class CicloForEjercicio {
 		// + alt + flecha arriba o abajo
 		
 		do {
-			System.out.println("Ingrese la cantidad de registros a procesar: ");
+			System.out.println("Ingrese la cantidad de registros a procesar: >0 ");
 			cantidadRegistros = teclado.nextInt();
 			//no hay vectores negativos, entonces se le va a pedir que siga ingresando 
 			//numeros hasta que ingrese uno mayor a 0

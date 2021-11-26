@@ -31,6 +31,14 @@ public class CicloFor {
 			System.out.println("pos: "+ i + "val: "+ aux);	
 		}
 		
+		
+		
+		/// bajando
+		
+		for(int i=alturas.length-1; i>=0 ; i--) {
+			System.out.println("pos: "+i+" val: "+alturas[i]);
+		}	
+			
 		//// for each
 		
 		for(float dato : alturas) {

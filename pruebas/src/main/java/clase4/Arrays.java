@@ -5,7 +5,7 @@ public class Arrays {
 	public static void main(String[] args) {
 		// crear vector
 		
-		int[] edades = new int[2]; // un vector de 3 posiciones 0.1
+		int[] edades = new int[2]; // un vector de 2 posiciones 0.1
 		// new int[x]; donde x es el length del vector
 		
 		// [0,0] está asi en un principio
