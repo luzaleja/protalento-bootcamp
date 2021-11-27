@@ -1,6 +1,5 @@
 package ejercicioAdicionalSemana3;
 
-import java.util.Arrays;
 import java.util.Scanner;
 
 public class Ejercicio {
@@ -156,11 +155,12 @@ public class Ejercicio {
 		
 		// ALUMNOS QUE DEBEN RECURSAR LA MATERIA : obtuvieron un promedio < 7
 		
-		System.out.println("Alumnos que deben recursar la materia");
+		System.out.println("Alumnos que deben recursar la materia: ");
 		for (int i = 0; i < cantidadAlumnos; i++) {
 			if ((Double)matrizpromedios[i][1] < 7) {
 				System.out.println(matrizpromedios[i][0] + " con un promedio de: " + matrizpromedios[i][1]);
 			}
+			
 		}		
 
 	}
