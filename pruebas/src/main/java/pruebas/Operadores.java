@@ -36,6 +36,7 @@ public class Operadores {
 		
 		float ancho = 205.7F;
 		
+		System.out.println(alto +" "+ ancho);
 		// que tan grande puede ser el numero
 		//el valor
 		//double puede ser mas grande que float
@@ -48,12 +49,12 @@ public class Operadores {
 		//no pierdo precision
 		//uso double, el más grande
 		
-		double resDiv = alto/ancho;
+		//double resDiv = alto/ancho;
 		
 		//si quiero el float dentro del double
-		float resDiv1 = (float)alto/ancho;
+		//float resDiv1 = (float)resDiv;
 		
-		byte valor = 127; // de -128 a +127
+		//byte valor = 127; // de -128 a +127
 		
 		//consultar java data type range
 		//para ver los rangos de cada tipo de dato
@@ -63,17 +64,17 @@ public class Operadores {
 		
 		//no puedo dividir por 0
 		
-		double div0 = alto/ 0;
+		//double div0 = alto/ 0;
 		//da Infinity cuando es float o double
 		//si es int, da error
 		
 		//modulo %
-		int a = 10;
-		int b = 5;
+		//int a = 10;
+		//int b = 5;
 		// D |_d_
 		// r% c/
 		//mod %
-		int mod = a % b;
+		//int mod = a % b;
 		//da 0
 		
 		
@@ -83,7 +84,7 @@ public class Operadores {
 		// > < >= <= != 
 		//todos devuelven un valor boolean
 		
-		boolean resAltoAncho = alto < ancho;
+		//boolean resAltoAncho = alto < ancho;
 		
 		
 		//operadores logicos
@@ -99,10 +100,10 @@ public class Operadores {
 		//horario 19:30 cond2
 		//comienza el curso si cond1 y cond2
 		
-		boolean esMartes = true;
-		boolean horario19 = false;
-		boolean curso = esMartes && horario19;
-		System.out.println("el valor de verdad de " +esMartes + " && " + horario19 + "=" +curso);
+		//boolean esMartes = true;
+		//boolean horario19 = false;
+		//boolean curso = esMartes && horario19;
+		//System.out.println("el valor de verdad de " +esMartes + " && " + horario19 + "=" +curso);
 		
 		//si quiero 0 para false y 1 para true
 		// c ? 1 : 0

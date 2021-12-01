@@ -26,8 +26,8 @@ public class TiposDeDatos {
 		//asignar (siempre comillas dobles)
 		nombre = "carlos";
 		
-		boolean flag = true;
-		boolean otroFlag = false;
+		//boolean flag = true;
+		//boolean otroFlag = false;
 		
 		char letra = 'a';
 		//ese si se puede con comillas simples, solo contiene un caracter
@@ -39,6 +39,12 @@ public class TiposDeDatos {
 		//definir es darle el tipo a una variable
 		// int edad;
 		
+		System.out.println(edad+edadShort+edadInt+edadLong+edadFloat+edadDouble);
+		System.out.println(nombre);
+		
+		System.out.println(letra);
+		
+		System.out.println(apellido + apellido2);
 		//definir y asignar
 		//int edad2= 10;
 		
