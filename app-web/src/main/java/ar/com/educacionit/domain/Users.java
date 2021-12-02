@@ -7,6 +7,7 @@ public class Users {
 	private String password;
 	
 	private Socios socio;
+	// esta relacionado con el socio
 
 	public Users(Long id, String username, String password) {
 		super();

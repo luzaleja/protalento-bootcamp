@@ -9,10 +9,6 @@ public class Socios {
 	private String direccion;
 	private Long paisesId;
 	
-	public String toString() {
-		return "Socios [id=" + id + ", nombre=" + nombre + ", apellido=" + apellido + ", email=" + email
-				+ ", direccion=" + direccion + ", paisesId=" + paisesId + "]";
-	}
 
 	public Socios(Long id, String nombre, String apellido, String email, String direccion, Long paisesId) {
 		super();
@@ -81,7 +77,10 @@ public class Socios {
 		this.paisesId = paisesId;
 	}
 	
-	
+	public String toString() {
+		return "Socios [id=" + id + ", nombre=" + nombre + ", apellido=" + apellido + ", email=" + email
+				+ ", direccion=" + direccion + ", paisesId=" + paisesId + "]";
+	}
 	
 	
 	

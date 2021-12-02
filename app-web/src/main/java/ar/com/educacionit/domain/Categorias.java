@@ -54,7 +54,6 @@ public class Categorias {
 	}
 
 
-	@Override
 	public String toString() {
 		return "Categorias [id=" + id + ", descripcion=" + descripcion + ", codigo=" + codigo + "]";
 	}

@@ -54,7 +54,6 @@ public class Marcas {
 		this.habilitada = habilitada;
 	}
 
-	@Override
 	public String toString() {
 		return "Marcas [id=" + id + ", marca=" + marca + ", codigo=" + codigo + ", habilitada=" + habilitada + "]";
 	}

@@ -11,14 +11,21 @@ public class Articulos {
 	private Double precio;
 	private Integer stock;
 	private Long marcaId;
+	// private Marcas marca;
+	// un articulo puede tener una marca (objeto)
 	private Long categoriaId;
+	// private Categorias categoria;
+	
 	
 	// sobrecarga del constructor
 	// dos constructores, uno tiene id y el otro no
 	// si están desordenados, pueden tener los mismos atributos
+	// el que no tiene el id no lo tiene porque al insertar un articulo en la base de
+	// datos, esa generacion del id se hará de forma automática
 	
 	
 	// hacia la base de datos
+	// no es para generar un registro
 	public Articulos(String titulo, Date fechaCreacion, String codigo, Double precio, Integer stock, Long marcaId,
 			Long categoriaId) {
 		this.titulo = titulo;
@@ -54,6 +61,11 @@ public class Articulos {
 	
 	public Double getPrecio() {
 		return this.precio;
+	}
+	
+	public String getPrecio(String pattern) {
+		//##,###,00
+		return this.precio.toString();
 	}
 	
 	public String getTitulo() {
@@ -112,8 +124,6 @@ public class Articulos {
 		this.categoriaId = categoriaId;
 	}
 
-	
-	
 	public void setId(Long id) {
 		this.id = id;
 	}
@@ -126,13 +136,7 @@ public class Articulos {
 		this.precio = precio;
 	}
 
-	public String getPrecio(String pattern) {
-		//##,###,00
-		return this.precio.toString();
-	}
-
-
-	public String toString() {
+ 	public String toString() {
 		return "Articulo [id=" + id + ", titulo=" + titulo + ", fechaCreacion=" + fechaCreacion + ", codigo=" + codigo
 				+ ", precio=" + precio + ", stock=" + stock + ", marcaId=" + marcaId + ", categoriaId=" + categoriaId
 				+ "]";
