@@ -11,7 +11,7 @@ public class Buscador {
 	
 	
 	public Buscador() {
-		
+		System.out.println("Creando buscador...");
 	}
 	
 	public void buscar() {
@@ -39,18 +39,21 @@ public class Buscador {
 	}
 	
 	public Integer getCantidadResultados() {
+		// como cantidadResultados es un objeto, el default es null
+		// como no queremos que regrese cantidad null, 
+		// le decimos que si encuentra null, nos diga que los resultados son 0
 		if(this.cantidadResultados == null) {
 			this.setCantidadResultados(0);
 		}
 		return this.cantidadResultados;
 	}
 	
-	void definirClaveBusqueda(String clave) {
+	/*void definirClaveBusqueda(String clave) {
 		claveBusqueda = clave;
 	}
+	*/
 	
-	
-	public void mostrarResultados() {
+		public void mostrarResultados() {
 		if(this.resultados.length > 0) {
 			for(Articulo aux : this.resultados ) {
 				aux.detalleArticulo();
@@ -59,4 +62,19 @@ public class Buscador {
 			System.out.println("No hay resultados para " + this.claveBusqueda);
 		}
 	}
+
+	public String getClaveBusqueda() {
+		return claveBusqueda;
+	}
+
+	public void setClaveBusqueda(String claveBusqueda) {
+		this.claveBusqueda = claveBusqueda;
+	}
+
+	public Articulo[] getResultados() {
+		return resultados;
+	}
+	
+	// No setResultados porque los resultados se definen dentro de la clase
+	// no se definiran desde afuera, sino por medio del buscador y la DB
 }

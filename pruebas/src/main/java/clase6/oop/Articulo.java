@@ -18,6 +18,7 @@ public class Articulo {
 			this.envioGratis = true;
 		}
 		this.favorito = favorito;
+		this.precio = precio;
 		this.titulo = titulo;
 		this.imagen = imagen;
 		this.cantidad = cantidad;
@@ -25,6 +26,8 @@ public class Articulo {
 	}
 	
 	//generate getters and setters alt shift s
+	//se hacen getters y setters para que se puedan acceder a los atributos desde afuera
+	//por ejemplo si quieren ver a la imagen, afuera del buscador, se haría con un get
 	
 	public boolean isFavorito() {
 		return favorito;
@@ -90,6 +93,10 @@ public class Articulo {
 	public void detalleArticulo() {
 		System.out.println("Titulo:" + this.titulo);
 		System.out.println("Precio:" + this.precio);
-		//completar!!!
+		System.out.println("Imagen:" + this.imagen);
+		System.out.println("Favorito:" + this.favorito);
+		System.out.println("Cantidad:" + this.cantidad);
+		System.out.println("Cuotas:" + this.tieneCuotas);
+		
 	}
 }

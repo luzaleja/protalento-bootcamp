@@ -6,25 +6,39 @@ public class General {
 
 	public static void main(String[] args) {
 		
-		Scanner teclado = new Scanner(System.in);
+		System.out.println("HOla".replace("Ho","hO"));
 		
-		int cont = 0;
+		System.out.println("Hola".concat("Mundo").concat(" "));
 		
-		do{
-			System.out.println("Ingrese su clave:");
-			String clave = teclado.next();
-			if (clave.equals("1234")) break;
-			cont++;
-			if(cont==1)System.out.println("Tiene dos chances !");
-			if(cont==2)System.out.println("Atención!! Ultima oportunidad!");
-		}while (cont < 3);
+		int a = 1;
+		if (a>0) {
+			System.out.println("si");
+		}else{
+			System.out.println("no");
+		}
 		
-		if (cont == 3)
-			System.out.println("tres veces fallidas");
-		else 
-			System.out.println("Bienvenido al sistema");
+		float numeroDecimal = 5.602f;
+		
+		System.out.println(String.format("%.5f",numeroDecimal));
+		
+		System.out.println("Hola Mundo".substring(3));
+		
+		System.out.println(Math.abs(6.3654f));
+		
+		Scanner scanner = new Scanner(System.in);
 
-		teclado.close();
+		byte numeroByte;
+
+		System.out.print("Escriba un numero en el rango [-128, 127]: ");
+
+		numeroByte = scanner.nextByte();
+
+		System.out.println("Escribio: " + numeroByte);
+
+		scanner.close();
+		
+		System.out.println("         Hola Mundo   ".trim());
+		
 		
 	}
 }
