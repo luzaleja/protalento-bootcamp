@@ -18,7 +18,7 @@ public class MainTorre {
 		System.out.println("Reporte de los voladores en aproximación: "+"\n");
 		
 		for (int i = 0; i < voladores.length; i++) {
-			voladores[i].detallar();
+			voladores[i].detalle();
 			if (voladores[i] instanceof Aterrizable) {
 				//si es una instancia de Aterrizable, casteamos para usar su metodo abs
 				Aterrizable atr = (Aterrizable)voladores[i]; 
