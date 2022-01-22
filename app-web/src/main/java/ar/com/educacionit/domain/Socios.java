@@ -1,7 +1,9 @@
 package ar.com.educacionit.domain;
 
-public class Socios {
+public class Socios implements Entity {
 
+	// atributos, que son los campos en la tabla Socios
+	
 	private Long id;
 	private String nombre;
 	private String apellido;
@@ -9,7 +11,12 @@ public class Socios {
 	private String direccion;
 	private Long paisesId;
 	
+	// constructor con id
 
+	public Socios() {
+		//constructor por defecto
+	}
+	
 	public Socios(Long id, String nombre, String apellido, String email, String direccion, Long paisesId) {
 		super();
 		this.id = id;
@@ -20,6 +27,8 @@ public class Socios {
 		this.paisesId = paisesId;
 	}
 
+	// constructor sin id
+	
 	public Socios(String nombre, String apellido, String email, String direccion, Long paisesId) {
 		super();
 		this.nombre = nombre;
@@ -29,6 +38,8 @@ public class Socios {
 		this.paisesId = paisesId;
 	}
 
+	// getters y setters
+	
 	public Long getId() {
 		return id;
 	}
@@ -76,6 +87,8 @@ public class Socios {
 	public void setPaisesId(Long paisesId) {
 		this.paisesId = paisesId;
 	}
+	
+	// toString
 	
 	public String toString() {
 		return "Socios [id=" + id + ", nombre=" + nombre + ", apellido=" + apellido + ", email=" + email

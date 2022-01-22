@@ -1,6 +1,6 @@
 package ar.com.educacionit.domain;
 
-public class Categorias {
+public class Categorias implements Entity {
 
 	// atributos
 	private Long id;
@@ -8,6 +8,11 @@ public class Categorias {
 	private String codigo;
 	
 	// constructor
+	
+	public Categorias () {
+		//por defecto
+	}
+	
 	
 	public Categorias(Long id, String descripcion, String codigo) {
 		super();

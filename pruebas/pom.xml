@@ -7,4 +7,9 @@
   </parent>
   <artifactId>pruebas</artifactId>
   <name>primer curso java para no programadores</name>
+  
+  <properties>
+  	<maven.compiler.target>11</maven.compiler.target>
+  	<maven.compiler.source>11</maven.compiler.source>
+  </properties>
 </project>

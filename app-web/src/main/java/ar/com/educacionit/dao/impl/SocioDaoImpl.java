@@ -1,0 +1,102 @@
+package ar.com.educacionit.dao.impl;
+
+//import ar.com.educacionit.dao.ICrud;
+import ar.com.educacionit.dao.SociosDao;
+import ar.com.educacionit.domain.Socios;
+
+public class SocioDaoImpl extends JdbcDaoBase<Socios> implements SociosDao{
+
+	public SocioDaoImpl() {
+		super("socios"); //es la tabla
+		//super("socios",Socios.class); aca con Socios.class le estoy diciendo con que clase trabajar
+		//api reflection etc
+	}
+
+	@Override
+	public String getSaveSQL(Socios entity) {
+
+		//se hace aca lo particular del sql
+		//(campo1,campo2,campon)
+		//values
+		//(value1,value2,valuen)
+		
+		return ("(nombre,apellido,email,direccion,paises_id) values('"+entity.getNombre()+","+entity.getApellido()+
+				","+entity.getEmail()+","+entity.getDireccion()+","+entity.getPaisesId() + ")" );
+	}
+
+	@Override
+	public String getUpdateSQL(Socios entity) {
+		String sql = "(nombre='"+entity.getNombre()+"',";
+		sql = sql + "apellido='"+entity.getApellido()+"',";
+		sql = sql + "email='"+entity.getEmail()+"',";
+		if(entity.getPaisesId() != null) {
+			sql = sql + "paises_id='"+entity.getPaisesId()+"'";
+		}
+		return sql;
+	}
+	
+	/*
+	//estaba ICrud, SocioSQLCustom
+	
+	//create
+	public Socios save(Socios socio) {
+		// mas adelante veremos como conectarnos a la db
+		// luego tendrias que crear una clase SocioMain que ejecute la implementacion
+				
+		//como insertar datos
+		
+		//INSERT
+		
+		String sql = "INSERT INTO SOCIOS(nombre,apellido,email,direccion) VALUES('carlos','lopez','krloss@gmail.com','av siempre viva 46')";
+		System.out.println("Ejecutando sql: " + sql);
+		return new Socios(10L,"carlos","lopez","krloss@gmail.com","av siempre viva 46",1L);
+	}
+
+	//read (by id)
+	public Socios getOne(Long id) {
+		String sql = "SELECT * FROM SOCIOS WHERE ID = "+id;
+		System.out.println("Ejecutando sql: " + sql);
+		return new Socios(id,"carlos","lopez","krloss@gmail.com","av siempre viva 46",1l);
+	}
+
+	public void update(Socios entity) {
+		String sql = "UPDATE socios" +
+				"SET direccion = '"+entity.getDireccion()+"' , apellido = '"+
+				entity.getApellido()+"' , paises_id = " +entity.getPaisesId()+
+				" WHERE id = 1";
+		System.out.println(sql);
+	}
+	
+	//select *
+	
+	public Socios[] findAll() {
+		String sql = "SELECT * FROM socios";
+		
+		//varios row 0 > n
+		System.out.println("Ejecutando sql: " + sql);
+		
+		Socios socio1 = new Socios(1L,"carlos","lopez","krloss@gmail.com","av siempre viva 46",1l);
+		Socios socio2 = new Socios(2L,"carlos","lopez","krloss@gmail.com","av siempre viva 46",1l);
+		Socios socio3 = new Socios(3L,"carlos","lopez","krloss@gmail.com","av siempre viva 46",1l);
+		
+		return new Socios [] {socio1,socio2,socio3};
+		//retorna un vector de socios 
+	}
+	
+	//para revisar herencias de interfaz 
+	//versus
+	//implementar dos interfaces independientes
+	/*public Socios selectCustom() {
+		String sql = "select nombre,apellido from socios ";
+		System.out.println("Ejecutando sql: " + sql);
+		return new Socios(1L,"carlos","lopez","krloss@gmail.com","av siempre viva 46",1l);
+	}
+	
+	
+	public void delete(Long id) {
+		String sql = "DELETE FROM socios WHERE id = " + id;
+		System.out.println(sql);
+	}
+	*/
+	
+}

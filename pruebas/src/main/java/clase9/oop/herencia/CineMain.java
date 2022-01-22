@@ -14,7 +14,7 @@ public class CineMain {
 		
 		
 		// todas las personas pueden ir al cine
-		Persona[] personas = new Persona[5];
+		Persona[] personas = new Persona[4];
 		
 		// para que todos puedan entrar es mejor trabajar con la clase padre
 		// que es personas
