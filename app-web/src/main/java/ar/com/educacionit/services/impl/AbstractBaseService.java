@@ -1,5 +1,7 @@
 package ar.com.educacionit.services.impl;
 
+import java.util.List;
+
 import ar.com.educacionit.dao.GenericDao;
 import ar.com.educacionit.dao.exception.DuplicatedException;
 import ar.com.educacionit.dao.exception.GenericException;
@@ -29,33 +31,42 @@ public class AbstractBaseService<T> implements GenericService<T> {
 			//o se puede lanzar una excepcion siempre, con la excepcion original 
 			//para que el cliente busque por ahí la causa del error
 			throw new ServiceException("Error de DB al intentar obtener entity id="+id,e);
-		} finally {
-			//siempre se ejecuta
-			entity = null;
-		}
+		} 
 		return entity;
 	}
 
-	public void delete(Long id) {
-		genericDao.delete(id);
+	public void delete(Long id) throws ServiceException{
+		try {
+			genericDao.delete(id);
+		} catch (GenericException e) {
+			throw new ServiceException("Error eliminando entity id: "+id,e);
+		}
 	}
 
 	public T save(T entity) throws ServiceException{
 		try {
 			return genericDao.save(entity);
-		} catch (DuplicatedException de) {
+		} catch (DuplicatedException | GenericException de) {
 			//relanzo la exception como una ServiceException que contiene la 
 			//excepction original (la de)
 			throw new ServiceException("C101",de);
+		} 
+	}
+
+	public void update(T entity) throws ServiceException{
+		try {
+			genericDao.update(entity);
+		} catch (GenericException | DuplicatedException e) {
+			throw new ServiceException("Error actualizando socio", e);
 		}
 	}
 
-	public void update(T entity) {
-		genericDao.update(entity);
-	}
-
-	public T[] findAll() {
-		return genericDao.findAll();
+	public List<T> findAll() throws ServiceException {
+		try {
+			return genericDao.findAll();
+		} catch (GenericException e) {
+			throw new ServiceException("Error consultando listado",e);
+		}
 	}
 
 }

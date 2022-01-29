@@ -1,5 +1,8 @@
 package ar.com.educacionit.dao.impl;
 
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+
 //import ar.com.educacionit.dao.ICrud;
 import ar.com.educacionit.dao.SociosDao;
 import ar.com.educacionit.domain.Socios;
@@ -13,27 +16,39 @@ public class SocioDaoImpl extends JdbcDaoBase<Socios> implements SociosDao{
 	}
 
 	@Override
-	public String getSaveSQL(Socios entity) {
+	public String getSaveSQL() {
 
-		//se hace aca lo particular del sql
+		//se hace aca lo particular del sql de Socios
 		//(campo1,campo2,campon)
 		//values
 		//(value1,value2,valuen)
 		
-		return ("(nombre,apellido,email,direccion,paises_id) values('"+entity.getNombre()+","+entity.getApellido()+
-				","+entity.getEmail()+","+entity.getDireccion()+","+entity.getPaisesId() + ")" );
+		return ("(nombre,apellido,email,direccion,paises_id) VALUES('?,?,?,?,?')" );
 	}
 
 	@Override
-	public String getUpdateSQL(Socios entity) {
-		String sql = "(nombre='"+entity.getNombre()+"',";
-		sql = sql + "apellido='"+entity.getApellido()+"',";
-		sql = sql + "email='"+entity.getEmail()+"',";
-		if(entity.getPaisesId() != null) {
-			sql = sql + "paises_id='"+entity.getPaisesId()+"'";
-		}
+	protected void save(PreparedStatement st, Socios entity) throws SQLException {
+		st.setString(1, entity.getNombre());
+		st.setString(2, entity.getApellido());
+		st.setString(3, entity.getEmail());
+		st.setString(4, entity.getDireccion());
+		st.setLong(5, entity.getPaisesId());
+	}
+	
+	@Override
+	public String getUpdateSQL() {
+		String sql = "nombre='?', apellido='?', email='?',paises_id=?";
 		return sql;
 	}
+
+	@Override
+	protected void update(PreparedStatement st, Socios entity) throws SQLException{
+		st.setString(1, entity.getNombre());
+		st.setString(2, entity.getApellido());
+		st.setString(3, entity.getEmail());
+		st.setLong(4, entity.getPaisesId());
+	}
+
 	
 	/*
 	//estaba ICrud, SocioSQLCustom

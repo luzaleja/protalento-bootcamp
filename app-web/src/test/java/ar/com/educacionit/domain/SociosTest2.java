@@ -7,39 +7,19 @@ import ar.com.educacionit.services.exceptions.ServiceException;
 import ar.com.educacionit.services.impl.CategoriaServiceImpl;
 import ar.com.educacionit.services.impl.SociosServiceImpl;
 
-public class SociosTest {
+public class SociosTest2 {
 
 	public static void main(String[] args) throws ServiceException{
 		
-		//simulo que alguien cargo los datos desde teclado
-		String nombre = "JUAN";
-		String apellido = "PEREZ";
-		String email = "unmail@mail.com";
-		String direccion = "calle 13";
-		Long pais = 1l; //1=ARG, 2=COL, 3=BRA, ETC
-		
-		//Socios ss = new SociosServiceImpl().getOne(1l);
-		//esto funciona porque el getOne usa el SociosDao para traer una variable de tipo Socios
-		//System.out.println(ss);
-		
 		SociosService service = new SociosServiceImpl();
-		Socios socio = new Socios(nombre,apellido,email,direccion,pais);
-		service.save(socio);
+		Socios socio = service.getOne(5l);
 		
 		socio.setApellido("nuevo apellido");
 		socio.setNombre("nuevo nombre");
-		socio.setEmail("email@mail.com.ar");
+		socio.setEmail("emaillargounmailunmailunmailunmailunmailunmailunmailunmailunmailunmailunmailunmail@mail.com.ar");
 		
 		service.update(socio);
 		
-		CategoriaService cservice = new CategoriaServiceImpl();
-		Categorias categoria = new Categorias("televisores","abc1234",1l);
-		cservice.save(categoria);
-		
-		categoria.setCodigo("10000");
-		categoria.setDescripcion("descripcion nueva");
-		
-		cservice.update(categoria);
 		
 		
 		/*

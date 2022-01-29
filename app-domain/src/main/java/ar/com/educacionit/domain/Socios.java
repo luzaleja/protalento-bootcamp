@@ -1,5 +1,7 @@
 package ar.com.educacionit.domain;
 
+import java.util.Date;
+
 public class Socios implements Entity {
 
 	// atributos, que son los campos en la tabla Socios
@@ -10,6 +12,7 @@ public class Socios implements Entity {
 	private String email;
 	private String direccion;
 	private Long paisesId;
+	private Date fechaAlta;
 	
 	// constructor con id
 
@@ -25,6 +28,17 @@ public class Socios implements Entity {
 		this.email = email;
 		this.direccion = direccion;
 		this.paisesId = paisesId;
+	}
+
+	public Socios(Long id, String nombre, String apellido, String email, String direccion, Long paisesId, Date fechaAlta) {
+		super();
+		this.id = id;
+		this.nombre = nombre;
+		this.apellido = apellido;
+		this.email = email;
+		this.direccion = direccion;
+		this.paisesId = paisesId;
+		this.fechaAlta = fechaAlta;
 	}
 
 	// constructor sin id
@@ -88,8 +102,15 @@ public class Socios implements Entity {
 		this.paisesId = paisesId;
 	}
 	
+	public Date getFechaAlta() {
+		return fechaAlta;
+	}
+
+	public void setFechaAlta(Date fechaAlta) {
+		this.fechaAlta = fechaAlta;
+	}
+
 	// toString
-	
 	public String toString() {
 		return "Socios [id=" + id + ", nombre=" + nombre + ", apellido=" + apellido + ", email=" + email
 				+ ", direccion=" + direccion + ", paisesId=" + paisesId + "]";

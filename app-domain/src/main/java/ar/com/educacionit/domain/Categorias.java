@@ -6,6 +6,7 @@ public class Categorias implements Entity {
 	private Long id;
 	private String descripcion;
 	private String codigo;
+	private Long habilitada;
 	
 	// constructor
 	
@@ -22,12 +23,21 @@ public class Categorias implements Entity {
 	}
 
 
-	public Categorias(String descripcion, String codigo) {
+	public Categorias(String descripcion, String codigo, Long habilitada) {
 		super();
 		this.descripcion = descripcion;
 		this.codigo = codigo;
+		this.habilitada = habilitada;
 	}
 
+	public Categorias(Long id,String descripcion, String codigo, Long habilitada) {
+		super();
+		this.id = id;
+		this.descripcion = descripcion;
+		this.codigo = codigo;
+		this.habilitada = habilitada;
+	}
+	
 
 	public Long getId() {
 		return id;
@@ -58,10 +68,20 @@ public class Categorias implements Entity {
 		this.codigo = codigo;
 	}
 
+	public Long getHabilitada() {
+		return habilitada;
+	}
+	
+	
+	public void setHabilitada(Long habilitada) {
+		this.habilitada = habilitada;
+	}
 
 	public String toString() {
 		return "Categorias [id=" + id + ", descripcion=" + descripcion + ", codigo=" + codigo + "]";
 	}
+
+
 	
 	
 	
