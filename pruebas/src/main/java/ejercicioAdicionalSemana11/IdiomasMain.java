@@ -84,7 +84,11 @@ public class IdiomasMain {
 				//obtenemos la persona con la clave
 				Persona personaSeleccionada = personas.get(codigoPersona);
 				//hacemos que la persona seleccionada hable segun el idioma que escoja
-				op.hablar(personaSeleccionada, teclado);
+				try {
+					op.hablar(personaSeleccionada, teclado);
+				} catch (LaPersonaNoHablaElIdiomaException e) {
+					e.printStackTrace();
+				}
 				
 			} else if(opcion == 3) {
 				Collection<Persona> personasQueHablanIdioma = new ArrayList<>();

@@ -89,7 +89,7 @@ public class MenuObtener {
 		return iIdiomaAAprender;
 	}
 	
-	public void hablar(Persona persona, Scanner teclado) {
+	public void hablar(Persona persona, Scanner teclado) throws LaPersonaNoHablaElIdiomaException {
 		String idiomaAHablar;
 		
 		//Set de lenguajes que pueden ser nativos o se pueden aprender
@@ -117,9 +117,31 @@ public class MenuObtener {
 		//con el enum, traemos la implementacion de la interfaz IIdioma correspondiente
 		IIdioma iIdiomaAHablar = idiomaEnum.getIdioma();
 		
-		persona.saludarEn(iIdiomaAHablar);
-		persona.presentarseEn(iIdiomaAHablar);
-		persona.despedirseEn(iIdiomaAHablar);
+		//revisando si la persona habla el idioma
+		
+		//revisamos el idioma nativo vs idioma que quiere hablar
+		//si el idioma nativo no es el que quiere hablar
+		boolean loHabla = false;
+		if(persona.getIdiomaNativo().getClass().getSimpleName() != iIdiomaAHablar.getClass().getSimpleName()) {
+			//revisamos si es uno de los que aprendio 
+			Collection<IIdioma> idiomasQueAprendio = persona.getIdiomasAprendidos();
+			for(IIdioma _idioma : idiomasQueAprendio) {
+				if(_idioma.getClass().getSimpleName() == iIdiomaAHablar.getClass().getSimpleName()) {
+					loHabla = true;
+					break;
+				} 
+			}
+		} else {
+			loHabla = true;
+		}
+		if(loHabla) {
+			persona.saludarEn(iIdiomaAHablar);
+			persona.presentarseEn(iIdiomaAHablar);
+			persona.despedirseEn(iIdiomaAHablar);
+		}else {
+			throw new LaPersonaNoHablaElIdiomaException("La persona no habla "+iIdiomaAHablar.getClass().getSimpleName());
+		}
+		
 	}
 	
 	public Collection<Persona> obtenerPersonasQueHablanUnIdioma(Map<Integer,Persona> personas,Scanner teclado) {
