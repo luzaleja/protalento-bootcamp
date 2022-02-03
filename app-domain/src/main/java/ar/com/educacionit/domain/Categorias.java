@@ -77,9 +77,14 @@ public class Categorias implements Entity {
 		this.habilitada = habilitada;
 	}
 
+
+	@Override
 	public String toString() {
-		return "Categorias [id=" + id + ", descripcion=" + descripcion + ", codigo=" + codigo + "]";
+		return "Categorias [id=" + id + ", descripcion=" + descripcion + ", codigo=" + codigo + ", habilitada="
+				+ habilitada + "]";
 	}
+
+	
 
 
 	

@@ -14,7 +14,7 @@ public class SociosTest {
 		//simulo que alguien cargo los datos desde teclado
 		String nombre = "JUAN";
 		String apellido = "PEREZ";
-		String email = "unmail@mail.com";
+		String email = "unmail3@mail.com";
 		String direccion = "calle 13";
 		Long pais = 1l; //1=ARG, 2=COL, 3=BRA, ETC
 		
@@ -26,12 +26,13 @@ public class SociosTest {
 		Socios socio = new Socios(nombre,apellido,email,direccion,pais);
 		service.save(socio);
 		
-		socio.setApellido("nuevo apellido");
-		socio.setNombre("nuevo nombre");
-		socio.setEmail("email@mail.com.ar");
 		
-		service.update(socio);
+		//socio.setApellido("nuevo apellido");
+		//socio.setNombre("nuevo nombre");
+		//socio.setEmail("email@mail.com.ar");
 		
+		//service.update(socio);
+		/*
 		CategoriaService cservice = new CategoriaServiceImpl();
 		Categorias categoria = new Categorias("televisores","abc1234",1l);
 		cservice.save(categoria);
@@ -41,7 +42,7 @@ public class SociosTest {
 		
 		cservice.update(categoria);
 		
-		
+		*/
 		/*
 		//eso el constructor de la clase Socios sin id para instanciar un objeto
 		Socios nuevoSocio = new Socios(nombre, apellido, email, direccion, pais);
