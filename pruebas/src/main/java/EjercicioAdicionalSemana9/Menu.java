@@ -15,15 +15,8 @@ public class Menu implements Crud {
 		System.out.println("Por favor ingrese el id de la materia a la que desea inscribir al alumno: ");
 		Long idMateria = teclado.nextLong();
 			
-		System.out.println("Por favor ingrese el número único de inscripción: ");
-		Long idInscripcion = teclado.nextLong();
+		return new Inscripcion(matricula,idMateria);
 		
-		DatosDBMemoria datos = new DatosDBMemoria();
-		if(datos.buscar(idInscripcion)) {
-			throw new InscripcionYaExisteException("El id " +idInscripcion+" ya existe en la base de datos.");
-		} else {
-			return new Inscripcion(idInscripcion,matricula,idMateria);
-		}
 	}
 
 	public void eliminar(Scanner teclado) throws InscripcionNoExisteException {

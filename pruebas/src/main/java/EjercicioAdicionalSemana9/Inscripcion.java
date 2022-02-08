@@ -11,10 +11,12 @@ public class Inscripcion {
 	private Long idInscripcion; // [0]
 	private Long matricula; // de alumno [1]
 	private Long idMateria; // [2]
+	private static long contador = 0;
 	
-	public Inscripcion(Long idInscripcion, Long matricula, Long idMateria) {
+	public Inscripcion(Long matricula, Long idMateria) {
 		super();
-		this.idInscripcion = idInscripcion;
+		contador += 1;
+		this.idInscripcion = contador;
 		this.matricula = matricula;
 		this.idMateria = idMateria;
 	}

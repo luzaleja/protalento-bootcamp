@@ -1,6 +1,8 @@
 package EjercicioAdicionalSemana9;
 
+import java.util.HashSet;
 import java.util.Scanner;
+import java.util.Set;
 
 public class Aplicacion {
 
@@ -42,6 +44,7 @@ public class Aplicacion {
 		int seleccion = opciones(teclado);
 		
 		Menu menu = new Menu();
+		Set<Inscripcion> inscripciones = new HashSet<>();
 		
 		while(seleccion == 1 || seleccion == 2 || seleccion == 3 || seleccion == 0) {
 			if(seleccion == 1) {

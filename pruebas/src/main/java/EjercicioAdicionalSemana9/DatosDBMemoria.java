@@ -1,16 +1,15 @@
 package EjercicioAdicionalSemana9;
 
-import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.Iterator;
-import java.util.List;
+import java.util.Set;
 
 public class DatosDBMemoria {
 
-	private List<Inscripcion> inscrip = new ArrayList<>();
-	//Inscripcion[] inscripciones = new Inscripcion[cantidadInscripciones];
+	private Set<Inscripcion> inscrip = new HashSet<>();
 	
 	public void agregarInscripcion(Inscripcion inscripcion) {
-		inscrip.add((inscripcion));
+		inscrip.add(inscripcion);
 	}
 	
 	public void borrarInscripcion(Long id) {
