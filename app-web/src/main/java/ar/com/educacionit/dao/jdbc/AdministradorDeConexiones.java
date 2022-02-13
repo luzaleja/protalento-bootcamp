@@ -29,12 +29,12 @@ public class AdministradorDeConexiones {
 		
 	}
 	
-	public static void main(String[] args) {
+	//public static void main(String[] args) {
 		
-		try (Connection con = AdministradorDeConexiones.obtenerConexion();) {
-			System.out.println("Conexion obtenida");
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
+	//	try (Connection con = AdministradorDeConexiones.obtenerConexion();) {
+	//		System.out.println("Conexion obtenida");
+	//	} catch (Exception e) {
+	//		e.printStackTrace();
+	//	}
+	//}
 }
