@@ -4,33 +4,27 @@ public class Alumno {
 
 	//atributos
 	
-	private Long matricula;
+	private Long idAlumno;
 	private String nombre;
 	private String apellido;
 	
 	//constructor
 	
-	public Alumno(Long matricula, String nombre, String apellido) {
-		super();
-		this.matricula = matricula;
+	public Alumno(Long idAlumno, String nombre, String apellido) {
+		this.idAlumno = idAlumno;
 		this.nombre = nombre;
 		this.apellido = apellido;
 	}
 
 	public Alumno(String nombre, String apellido) {
-		super();
 		this.nombre = nombre;
 		this.apellido = apellido;
 	}
 
 	//getters & setters
 	
-	public Long getMatricula() {
-		return matricula;
-	}
-
-	public void setMatricula(Long matricula) {
-		this.matricula = matricula;
+	public Long getIdAlumno() {
+		return idAlumno;
 	}
 
 	public String getNombre() {
@@ -51,7 +45,7 @@ public class Alumno {
 
 	@Override
 	public String toString() {
-		return "Alumno [matricula=" + matricula + ", nombre=" + nombre + ", apellido=" + apellido + "]";
+		return "Alumno [idAlumno=" + idAlumno + ", nombre=" + nombre + ", apellido=" + apellido + "]";
 	}
 	
 	

@@ -10,14 +10,12 @@ public class Materia {
 	//constructor
 	
 	public Materia(Long id, String curso, String turno) {
-		super();
 		this.id = id;
 		this.curso = curso;
 		this.turno = turno;
 	}
 
 	public Materia(String curso, String turno) {
-		super();
 		this.curso = curso;
 		this.turno = turno;
 	}
@@ -26,10 +24,6 @@ public class Materia {
 	
 	public Long getId() {
 		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
 	}
 
 	public String getCurso() {

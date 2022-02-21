@@ -1,8 +1,6 @@
 package EjercicioAdicionalSemana9;
 
-import java.util.HashSet;
 import java.util.Scanner;
-import java.util.Set;
 
 public class Aplicacion {
 
@@ -20,6 +18,7 @@ public class Aplicacion {
 		Scanner teclado = new Scanner(System.in);
 		
 		// 1. se crean las materias que se pueden inscribir
+		DatosDBMemoria datos = new DatosDBMemoria();
 		
 		Materia[] materias = crearMaterias(teclado);
 		System.out.println("--------------------------");
@@ -43,16 +42,14 @@ public class Aplicacion {
 		
 		int seleccion = opciones(teclado);
 		
-		Menu menu = new Menu();
-		Set<Inscripcion> inscripciones = new HashSet<>();
+		CrudImpl crud = new CrudImpl();
 		
 		while(seleccion == 1 || seleccion == 2 || seleccion == 3 || seleccion == 0) {
 			if(seleccion == 1) {
 				System.out.println("Ejecutando Inscripcion");
-				DatosDBMemoria datos = new DatosDBMemoria();
 				Inscripcion inscripcion;
 				try {
-					inscripcion = menu.inscribir(teclado);
+					inscripcion = crud.inscribir(teclado);
 					datos.agregarInscripcion(inscripcion);
 					System.out.println("La inscripción de id " + inscripcion.getIdInscripcion() + " fue exitosa.");
 				} catch (InscripcionYaExisteException e) {
@@ -62,11 +59,11 @@ public class Aplicacion {
 				}
 			} else if(seleccion == 2) {	
 				System.out.println("Ejecutando Eliminar inscripcion");
-				menu.eliminar(teclado);
+				crud.eliminar(teclado,datos);
 				seleccion = opciones(teclado);
 			} else if(seleccion == 3) {
 				System.out.println("Ejecutando Buscar inscripcion");
-				menu.buscar(teclado);
+				crud.buscar(teclado,datos);
 				seleccion = opciones(teclado);
 			} else if (seleccion == 0){
 				System.out.println("Saliendo.");
@@ -154,7 +151,7 @@ public class Aplicacion {
 			} else {
 				int repeticiones = 0;
 				for(int j = 0; j < i; j++) {
-					if(matricula == alumnos[j].getMatricula()) {
+					if(matricula == alumnos[j].getIdAlumno()) {
 						repeticiones++;
 						i--;
 					}

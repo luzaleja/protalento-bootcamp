@@ -6,8 +6,8 @@ public interface Crud {
 	
 	public Inscripcion inscribir(Scanner teclado) throws InscripcionYaExisteException;
 	
-	public void eliminar(Scanner teclado) throws InscripcionNoExisteException ;
+	public void eliminar(Scanner teclado, DatosDBMemoria datos) throws InscripcionNoExisteException ;
 	
-	public void buscar(Scanner teclado);
+	public void buscar(Scanner teclado, DatosDBMemoria datos);
 
 }

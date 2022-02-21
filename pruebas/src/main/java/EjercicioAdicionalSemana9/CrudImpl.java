@@ -2,7 +2,7 @@ package EjercicioAdicionalSemana9;
 
 import java.util.Scanner;
 
-public class Menu implements Crud {
+public class CrudImpl implements Crud {
 
 	public Inscripcion inscribir(Scanner teclado) throws InscripcionYaExisteException{
 		
@@ -14,15 +14,17 @@ public class Menu implements Crud {
 			
 		System.out.println("Por favor ingrese el id de la materia a la que desea inscribir al alumno: ");
 		Long idMateria = teclado.nextLong();
+		
+		System.out.println("IdInscr");
+		Long idInscripcion = teclado.nextLong();
 			
-		return new Inscripcion(matricula,idMateria);
+		return new Inscripcion(idInscripcion,matricula,idMateria);
 		
 	}
 
-	public void eliminar(Scanner teclado) throws InscripcionNoExisteException {
+	public void eliminar(Scanner teclado, DatosDBMemoria datos) throws InscripcionNoExisteException {
 		System.out.println("Por favor indique el id de la inscripción que desea eliminar: ");
 		Long idInscripcion = teclado.nextLong();
-		DatosDBMemoria datos = new DatosDBMemoria();
 		if(datos.buscar(idInscripcion)) {
 			datos.borrarInscripcion(idInscripcion);
 		} else {
@@ -30,10 +32,9 @@ public class Menu implements Crud {
 		}
 	}
 
-	public void buscar(Scanner teclado) {
+	public void buscar(Scanner teclado, DatosDBMemoria datos) {
 		System.out.println("Por favor indique el id de la inscripción que desea buscar: ");
 		Long idInscripcion = teclado.nextLong();
-		DatosDBMemoria datos = new DatosDBMemoria();
 		datos.buscarInscripcion(idInscripcion);
 	}
 	
