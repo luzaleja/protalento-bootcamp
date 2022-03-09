@@ -2,14 +2,14 @@ package ar.com.educacionit.domain;
 
 import java.util.Date;
 
-public class Articulos {
+public class Articulos implements Entity {
 	
 	private Long id;
 	private String titulo;
-	private Date fechaCreacion;
 	private String codigo;
+	private Date fechaCreacion;
 	private Double precio;
-	private Integer stock;
+	private Long stock;
 	private Long marcaId;
 	// private Marcas marca;
 	// un articulo puede tener una marca (objeto)
@@ -26,19 +26,26 @@ public class Articulos {
 	
 	// hacia la base de datos
 	// no es para generar un registro
-	public Articulos(String titulo, Date fechaCreacion, String codigo, Double precio, Integer stock, Long marcaId,
+	
+	
+	
+	public Articulos(String titulo, String codigo, Date fechaCreacion, Double precio, Long stock, Long marcaId,
 			Long categoriaId) {
 		this.titulo = titulo;
-		this.fechaCreacion = fechaCreacion;
 		this.codigo = codigo;
+		this.fechaCreacion = fechaCreacion;
 		this.precio = precio;
 		this.stock = stock;
 		this.marcaId = marcaId;
 		this.categoriaId = categoriaId;
 	}
 
+	public Articulos() {
+		
+	}
+
 	// desde la base de datos
-	public Articulos(Long id, String titulo, Date fechaCreacion, String codigo, Double precio, Integer stock,
+	public Articulos(Long id, String titulo, Date fechaCreacion, String codigo, Double precio, Long stock,
 			Long marcaId, Long categoriaId) {
 		this.id = id;
 		this.titulo = titulo;
@@ -59,6 +66,12 @@ public class Articulos {
 	// el retorno no cuenta
 	// los parametros tendrían que ser diferentes
 	
+	public Articulos(Long id, String titulo, Double precio) {
+		this.id = id;
+		this.titulo = titulo;
+		this.precio = precio;
+	}
+
 	public Double getPrecio() {
 		return this.precio;
 	}
@@ -100,11 +113,11 @@ public class Articulos {
 		this.codigo = codigo;
 	}
 
-	public Integer getStock() {
+	public Long getStock() {
 		return stock;
 	}
 
-	public void setStock(Integer stock) {
+	public void setStock(Long stock) {
 		this.stock = stock;
 	}
 
@@ -141,12 +154,5 @@ public class Articulos {
 				+ ", precio=" + precio + ", stock=" + stock + ", marcaId=" + marcaId + ", categoriaId=" + categoriaId
 				+ "]";
 	}
-	
-	// get/set
-	// toString
-		
-	// representar un estado de la clase
-	// me muestra una foto de un objeto en un momento determinado
-	// alt shift s generate toString()
 	
 }

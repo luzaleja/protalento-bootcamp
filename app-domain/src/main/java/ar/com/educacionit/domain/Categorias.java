@@ -1,7 +1,6 @@
 package ar.com.educacionit.domain;
 
 public class Categorias implements Entity {
-
 	// atributos
 	private Long id;
 	private String descripcion;

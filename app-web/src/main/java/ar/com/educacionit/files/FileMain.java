@@ -28,4 +28,22 @@ public class FileMain {
 		}
 		return f;
 	}
+	
+	public static void encontrarTodosLosArchivosDeUnaCarpeta(File folder) {
+		for(File file : folder.listFiles()) {
+			//Si no es un directorio, para e imprime el nombre del archivo
+			//lo hace para los archivos pertenecientes a la lista de archivos 
+			//encontrada por folder.listFiles()
+			//cuando todo lo que encuentre sean archivos, terminará la ejecución
+			//si encuentra un directorio dentro de folder.listFiles(), entrará a ese
+			//directorio con el else
+			if(!file.isDirectory()) {
+				System.out.println(file.getName());
+			} else {
+			//si es un directorio, vuelve a usar el metodo para encontrar todos
+				//los archivos que se encuentran dentro del directorio (carpeta/folder)
+				encontrarTodosLosArchivosDeUnaCarpeta(file);
+			}
+		}
+	}
 }
