@@ -15,9 +15,11 @@ import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
 
-public class PDFCreator <T> {
+import ar.com.educacionit.domain.Articulos;
 
-	public Document createPDFwithTable(int numberOfColumns, String pdfName, String[] columnHeader, Collection<T> collection) throws DocumentException, IOException {
+public class PDFCreator {
+
+	public Document createPDFwithTable(String pdfName, String[] columnHeader, Collection<Articulos> collection) throws DocumentException, IOException {
 		
 		//
 		Document document = new Document();
@@ -29,7 +31,7 @@ public class PDFCreator <T> {
 		
 		document.open();
 		
-		PdfPTable table = new PdfPTable(numberOfColumns);
+		PdfPTable table = new PdfPTable(columnHeader.length);
 		
 		BaseFont bf = BaseFont.createFont(BaseFont.COURIER,BaseFont.CP1250,false);
 		Font courier = new Font(bf, 10, Font.NORMAL, BaseColor.BLACK);
@@ -58,14 +60,25 @@ public class PDFCreator <T> {
 		
 	}
 	
-	private void addRows(PdfPTable table, Collection<T> collection, Font font) {
-		for(T element : collection) {
-			int elementSize = table.getNumberOfColumns();
-			for(int i = 0; i < elementSize; i++) {
-				//ahora podemos acceder a las celdas
-				Phrase ph = new Phrase(String.valueOf(element),font);
-				table.addCell(ph);
-			}
+	private void addRows(PdfPTable table, Collection<Articulos> collection, Font font) {
+		for(Articulos art : collection) {
+			//ahora podemos acceder a las celdas
+			//titulo
+			table.addCell(art.getTitulo());
+			//codigo
+			table.addCell(art.getCodigo());
+			//precio
+			String precio = Double.toString(art.getPrecio());
+			table.addCell(precio);
+			//stock
+			String stock = Long.toString(art.getStock());
+			table.addCell(stock);
+			//marcasid
+			String marcasId = Long.toString(art.getMarcaId());
+			table.addCell(marcasId);
+			//categoriasid
+			String categoriasId = Long.toString(art.getCategoriaId());
+			table.addCell(categoriasId);
 		}
 	}
 }

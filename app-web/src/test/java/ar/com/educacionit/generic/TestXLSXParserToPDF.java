@@ -19,13 +19,13 @@ public class TestXLSXParserToPDF {
 	
 		String[] columnHeader = new String[] {"TITULO","CODIGO","PRECIO","STOCK","MARCASID","CATEGORIASID"};
 		
-		PDFCreator<Articulos> pdfCreator = new PDFCreator<>();
+		PDFCreator pdfCreator = new PDFCreator();
 		
 		String pdfName = "ArticulosHoja2.pdf";
 		
-		pdfCreator.createPDFwithTable(6, pdfName, columnHeader, articulos);
+		pdfCreator.createPDFwithTable(pdfName, columnHeader, articulos);
 		
-		System.out.println("El archivo PDF se guardó en su escritorio con el nombre ArticulosHoja2.pdf.");
+		System.out.println("El archivo PDF se guardó en su escritorio con el nombre " + pdfName);
 		
 	}
 
