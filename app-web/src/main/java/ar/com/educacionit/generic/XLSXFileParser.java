@@ -42,8 +42,8 @@ public class XLSXFileParser extends BaseFile implements IParser<Collection<Artic
 			) {
 			
 			//usamos las clases propias de la libreria
-			
-			Sheet hojas = workbook.getSheetAt(0);
+			//cambiamos de 0 a 1, para poder usar la hoja 2 del libro
+			Sheet hojas = workbook.getSheetAt(1);
 			
 			//collection
 			Iterator<Row> filasDeLaHoja0 = hojas.iterator();
