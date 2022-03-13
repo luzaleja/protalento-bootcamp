@@ -18,8 +18,8 @@ public class ListadoServlet extends HttpServlet {
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		System.out.println("llegue al servlet /listado que escucha y atiende por POST");
-		resp.getWriter().print("hola frontend, soy el backend y atendi tu solicitud por POST");
+		System.out.println("llegue al servlet /listado que escucha y atiende por POST");//esto imprime por consola
+		resp.getWriter().print("hola frontend, soy el backend y atendi tu solicitud por POST");//esto en el frontend
 	}
 	
 	@Override
