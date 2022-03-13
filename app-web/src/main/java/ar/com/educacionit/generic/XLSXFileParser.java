@@ -42,34 +42,38 @@ public class XLSXFileParser extends BaseFile implements IParser<Collection<Artic
 			) {
 			
 			//usamos las clases propias de la libreria
-			//cambiamos de 0 a 1, para poder usar la hoja 2 del libro
-			Sheet hojas = workbook.getSheetAt(1);
+			//pasar por cada hoja
+			int cantHojas = workbook.getNumberOfSheets();
 			
-			//collection
-			Iterator<Row> filasDeLaHoja0 = hojas.iterator();
-			
-			boolean primerFila = true; //decimos que la primera fila es true, para poder
-			//saltarla
-			
-			while(filasDeLaHoja0.hasNext()) {
-				Row filaActual = filasDeLaHoja0.next();
-				if(primerFila) {
-					primerFila = false;
-					continue;
-				}
+			for(int i = 0; i < cantHojas; i++) {
+				Sheet hoja = workbook.getSheetAt(i);
+				//pasamos de hooja en hoja
+				//collection
+				Iterator<Row> filasDeLaHoja0 = hoja.iterator();
 				
-				//ahora que saltamos la primera fila, empezamos a leer la segunda
-				//donde empiezan los datos
-				Iterator<Cell> celdas = filaActual.iterator();
+				boolean primerFila = true; //decimos que la primera fila es true, para poder
+				//saltarla
 				
-				//ahora creo el articulo
-				Articulos articulo = new Articulos();
-				
-				while(celdas.hasNext()) {
+				while(filasDeLaHoja0.hasNext()) {
+					Row filaActual = filasDeLaHoja0.next();
+					if(primerFila) {
+						primerFila = false;
+						continue;
+					}
 					
-					fromCellToArticulos(celdas, articulo);
+					//ahora que saltamos la primera fila, empezamos a leer la segunda
+					//donde empiezan los datos
+					Iterator<Cell> celdas = filaActual.iterator();
+					
+					//ahora creo el articulo
+					Articulos articulo = new Articulos();
+					
+					while(celdas.hasNext()) {
+						
+						fromCellToArticulos(celdas, articulo);
+					}
+					articulos.add(articulo);
 				}
-				articulos.add(articulo);
 			}
 			
 		} catch (IOException fnfe) {
