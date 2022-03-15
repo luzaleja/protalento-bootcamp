@@ -10,11 +10,11 @@ public class Articulos implements Entity {
 	private Date fechaCreacion;
 	private Double precio;
 	private Long stock;
-	private Long marcaId;
-	// private Marcas marca;
+	private Long marcasId;
+	private Marcas marca;
 	// un articulo puede tener una marca (objeto)
-	private Long categoriaId;
-	// private Categorias categoria;
+	private Long categoriasId;
+	private Categorias categoria;
 	
 	
 	// sobrecarga del constructor
@@ -26,18 +26,16 @@ public class Articulos implements Entity {
 	
 	// hacia la base de datos
 	// no es para generar un registro
-	
-	
-	
-	public Articulos(String titulo, String codigo, Date fechaCreacion, Double precio, Long stock, Long marcaId,
-			Long categoriaId) {
+
+	public Articulos(String titulo, String codigo, Date fechaCreacion, Double precio, Long stock, Long marcasId,
+			Long categoriasId) {
 		this.titulo = titulo;
 		this.codigo = codigo;
 		this.fechaCreacion = fechaCreacion;
 		this.precio = precio;
 		this.stock = stock;
-		this.marcaId = marcaId;
-		this.categoriaId = categoriaId;
+		this.marcasId = marcasId;
+		this.categoriasId = categoriasId;
 	}
 
 	public Articulos() {
@@ -46,15 +44,15 @@ public class Articulos implements Entity {
 
 	// desde la base de datos
 	public Articulos(Long id, String titulo, Date fechaCreacion, String codigo, Double precio, Long stock,
-			Long marcaId, Long categoriaId) {
+			Long marcasId, Long categoriasId) {
 		this.id = id;
 		this.titulo = titulo;
 		this.fechaCreacion = fechaCreacion;
 		this.codigo = codigo;
 		this.precio = precio;
 		this.stock = stock;
-		this.marcaId = marcaId;
-		this.categoriaId = categoriaId;
+		this.marcasId = marcasId;
+		this.categoriasId = categoriasId;
 	}
 	
 	// constructor lo construimos con alt shift s: 
@@ -121,20 +119,20 @@ public class Articulos implements Entity {
 		this.stock = stock;
 	}
 
-	public Long getMarcaId() {
-		return marcaId;
+	public Long getMarcasId() {
+		return marcasId;
 	}
 
-	public void setMarcaId(Long marcaId) {
-		this.marcaId = marcaId;
+	public void setMarcasId(Long marcasId) {
+		this.marcasId = marcasId;
 	}
 
-	public Long getCategoriaId() {
-		return categoriaId;
+	public Long getCategoriasId() {
+		return categoriasId;
 	}
 
-	public void setCategoriaId(Long categoriaId) {
-		this.categoriaId = categoriaId;
+	public void setCategoriasId(Long categoriasId) {
+		this.categoriasId = categoriasId;
 	}
 
 	public void setId(Long id) {
@@ -149,9 +147,25 @@ public class Articulos implements Entity {
 		this.precio = precio;
 	}
 
+	public Marcas getMarca() {
+		return marca;
+	}
+
+	public void setMarca(Marcas marca) {
+		this.marca = marca;
+	}
+
+	public Categorias getCategoria() {
+		return categoria;
+	}
+
+	public void setCategoria(Categorias categoria) {
+		this.categoria = categoria;
+	}
+	
  	public String toString() {
 		return "Articulo [id=" + id + ", titulo=" + titulo + ", fechaCreacion=" + fechaCreacion + ", codigo=" + codigo
-				+ ", precio=" + precio + ", stock=" + stock + ", marcaId=" + marcaId + ", categoriaId=" + categoriaId
+				+ ", precio=" + precio + ", stock=" + stock + ", marcasId=" + marcasId + ", categoriasId=" + categoriasId
 				+ "]";
 	}
 	
