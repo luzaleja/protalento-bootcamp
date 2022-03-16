@@ -5,6 +5,7 @@ import java.util.Set;
 
 public class Menu {
 	
+	/*
 	public static void opcionesPrincipal(Scanner teclado, DatosDBMemoria baseDeDatos) {
 		int opcion = 1;
 		Set<Integer> opcionesDisponibles = Set.of(1,2,3,4,5,6,7,8,9,0);
@@ -64,4 +65,5 @@ public class Menu {
 			break;
 		}
 	}
+	**/
 }
