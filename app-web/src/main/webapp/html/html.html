@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<!-- el doctype le dice que es html5, se debe poner!! -->
+<html lang="es">
+<!-- decirle que la pagina esta en espanol,ingles,etc -->
+	<!-- no se ve al usuario -->
+	<head>
+		<title>Clase41- html</title>
+		<meta charset="utf-8"/>
+	</head>
+	
+	<!--  es lo que ve el usuario -->
+	<body>
+		<!-- etiquetas (esto es un comentario) -->
+		<!--  titulo principal : h1 , hay 6 niveles de titulos-->
+		<h1>Titulo Principal</h1>
+		<h2>Titulo Principal</h2>
+		<h3>Titulo Principal</h3>
+		<h4>Titulo Principal</h4>
+		<h5>Titulo Principal</h5>
+		<h6>Titulo Principal</h6>
+		
+		<!-- hr:dibujar una linea para separar secciones -->
+		<hr>
+		<!-- parrafos : p -->
+		<p>Soy un parrafo</p>
+		<p>Soy un parrafo 2</p>
+		<hr>
+		<!-- listas ul ol , no tienen un orden especifico-->
+		<!-- lista no ordenada -->
+		<ul>
+			<!--  necesitamos el li para que se vea, que es un list item -->
+			<li>soy el item 1</li>
+			<li>soy el item 2</li>
+			<li>soy el item 3</li>
+		</ul>
+		<hr>
+		<!-- lista ordenada -->
+		<ol>
+			<li>paso 1</li>
+			<li>paso 2</li>
+			<li>paso 3</li>
+		</ol>
+		<hr/>
+		<!-- elemento es igual a etiqueta -->
+		<!-- span queda uno al lado del otro -->
+		<!-- un span podria ir dentro de un li -->
+		<!-- o se puede usar para agrupar textos -->
+		<span>soy un span</span>
+		<span>soy otro span</span>
+		
+		<!-- div es un contenedor -->
+		<div>
+			<ul>
+				<li>soy un item dentro de un div</li>
+			</ul>
+			<p>soy un parrafo dentro de el mismo div</p>
+		</div>
+		
+		<!-- es mejor poner un texto dentro de un parrafo -->
+		
+		<!-- negrita -->
+		<b>Soy un texto en negrita</b>
+		
+		<!-- italica -->
+		<i>Soy un texto en italica</i>
+		
+		<!-- como usar los acentos: con los codigos de html -->
+		<!-- html special code -->
+		<!-- html.am/reference/html-special-characters.cfm -->
+		
+		<i>Soy un texto it&aacute;lica</i>
+		<div>
+			<p>Acentos</p>
+			<ul>
+				<li>&aacute;</li>
+				<li>&eacute;</li>
+				<li>&iacute;</li>
+				<li>&oacute;</li>
+				<li>&uacute;</li>
+			</ul>
+		</div>
+		
+		<!-- tablas -->
+		<!-- atributos -->
+		<table border="1">
+			<tr>
+				<td>primer celda</td>
+				<td>segunda celda</td>
+			</tr>
+			<tr>
+				<td>celda 1,fila 2</td>
+				<td>celda 2,fila 2</td>
+				<td>celda 3,fila 2</td>
+			</tr>
+		</table>
+		
+		<!-- una imagen -->
+		<img
+			height="15%"
+			width="15%"
+			alt="dracarys" 
+			src="https://i.pinimg.com/550x/07/5a/b4/075ab41b910b123986f60f93e46ecb6a.jpg"
+		/>
+		
+		<img 
+			height="25%"
+			width="25%"
+			alt="Mila"
+			src="../img/Mila.jpg"
+		/>
+		<hr>
+		<!-- formulario que envia datos a un servlet -->
+		<form action="/app-web/ListadoServlet" method="get">
+		<!-- o ="../ListadoServlet" -->
+			<input type="submit">
+		</form>
+		<hr>
+		
+		<!-- etiquetas de texto -->
+		<ul>
+			<li>&lt;b&gt;<b>&quot;texto en negrita&quot;</b>&lt;/b&gt;</li>
+			<li><mark>texto remarcado</mark></li>
+			<li><ins>texto subrayado</ins></li>
+			<li><small>texto pequeño</small></li>
+			<li><i>itálica</i></li>
+			<li><del>texto tachado</del></li>
+			<li><sup>texto superindice</sup></li>
+			<li><sub>texto subindice</sub></li>
+			<li><strong>texto fuerte</strong></li>
+		</ul>
+		
+		
+	</body>
+</html>

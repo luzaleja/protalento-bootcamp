@@ -17,5 +17,11 @@
 			<!-- con un boton adentro -->
 			<input type="submit" value="Pedir Listado"/>
 		</form>
+		<img 
+			height="25%"
+			width="25%"
+			alt="Mila"
+			src="<%=request.getContextPath()%>/img/Mila.jpg"
+		/>
 	</body>
 </html>
