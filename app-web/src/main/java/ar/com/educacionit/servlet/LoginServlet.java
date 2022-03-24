@@ -14,7 +14,6 @@ import ar.com.educacionit.services.exceptions.ServiceException;
 import ar.com.educacionit.services.impl.LoginServiceImpl;
 import ar.com.educacionit.web.enums.LoginViewEnum;
 import ar.com.educacionit.web.enums.ViewEnums;
-import at.favre.lib.crypto.bcrypt.BCrypt;
 
 @WebServlet("/LoginServlet")
 public class LoginServlet extends HttpServlet {
@@ -34,21 +33,14 @@ public class LoginServlet extends HttpServlet {
 		Users user;
 		
 		try {
-			user = ls.getUserByUserName(usernameFromHtml);
+			user = ls.getUserByUserNameAndPassword(usernameFromHtml,passwordFromHtml);
 		
-			if(user != null) {
-				
-				//BCRYPT
-				BCrypt.Result result = BCrypt.verifyer()
-						.verify(passwordFromHtml.getBytes(), user.getPassword().getBytes());
-				
-				if(!result.verified) {
-					//login.jsp con algun mensaje de error
-					target = ViewEnums.LOGIN;
-				}
-			}else {
-				//login.jsp con algun mensaje de error
+			if(user == null) {
 				target = ViewEnums.LOGIN;
+			}else {
+				//puedo guardar el usuario en el request o en la session
+				//lo guardamos en la session para que siga disponible durante la sesion
+				req.getSession().setAttribute("usuario", user);
 			}
 		} catch (ServiceException e) {			
 			e.printStackTrace();

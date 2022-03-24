@@ -3,9 +3,11 @@ package ar.com.educacionit.dao.impl;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.Date;
+import java.util.List;
 
 //import ar.com.educacionit.dao.ICrud;
 import ar.com.educacionit.dao.SociosDao;
+import ar.com.educacionit.dao.exception.GenericException;
 import ar.com.educacionit.domain.Socios;
 
 public class SocioDaoImpl extends JdbcDaoBase<Socios> implements SociosDao{
@@ -49,6 +51,21 @@ public class SocioDaoImpl extends JdbcDaoBase<Socios> implements SociosDao{
 		st.setString(2, entity.getApellido());
 		st.setString(3, entity.getEmail());
 		st.setLong(4, entity.getPaisesId());
+	}
+
+	@Override
+	public Socios getSociosByUserId(Long id) throws GenericException {
+		
+		String sql = "select * from socios where users_id = " + id;
+		
+		Socios entity = null;
+
+		List<Socios> list = super.findBySQL(sql);
+		
+		if(!list.isEmpty()) {
+			entity = list.get(0);
+		}
+		return entity;
 	}
 
 	
