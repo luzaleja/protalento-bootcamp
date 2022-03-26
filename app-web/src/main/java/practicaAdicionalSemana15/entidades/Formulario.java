@@ -1,4 +1,4 @@
-package practicaAdicionalSemana15;
+package practicaAdicionalSemana15.entidades;
 
 import java.util.Date;
 

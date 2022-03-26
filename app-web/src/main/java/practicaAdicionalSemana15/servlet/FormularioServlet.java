@@ -1,4 +1,4 @@
-package practicaAdicionalSemana15;
+package practicaAdicionalSemana15.servlet;
 
 import java.io.IOException;
 import java.text.ParseException;
@@ -15,6 +15,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import practicaAdicionalSemana15.entidades.Formulario;
+import practicaAdicionalSemana15.repository.MapaRepository;
+
 @WebServlet("/FormularioServlet")
 public class FormularioServlet extends HttpServlet {
 	
@@ -30,7 +33,6 @@ public class FormularioServlet extends HttpServlet {
 		String fechaNacimientoStr = req.getParameter("fechaNacimiento");
 		
 		List<String> requestValues = Arrays.asList(nombre,apellido,documento,edad,ocupacion,fechaNacimientoStr);
-		Map<Long,Formulario> formularios = new HashMap<>();
 		
 		//revisamos que no esten vacios
 		int camposVacios = 0;
@@ -67,10 +69,9 @@ public class FormularioServlet extends HttpServlet {
 			}
 					
 			Formulario form = new Formulario(nombre,apellido,Long.parseLong(documento),Integer.parseInt(edad),ocupacion,fechaNacimiento);
-			formularios.put(form.getDocumento(), form);
+			MapaRepository.addFormulario(form);
 			
 			//guardamos el mapa en session para que se pueda utilizar durante la sesion
-			req.getSession().setAttribute("mapa", formularios);
 			req.setAttribute("formulario", form);
 		}
 		

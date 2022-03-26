@@ -1,5 +1,5 @@
 <%@page import="java.text.SimpleDateFormat"%>
-<%@page import="practicaAdicionalSemana15.Formulario"%>
+<%@page import="practicaAdicionalSemana15.entidades.Formulario"%>
 <html>
 	<head>
 		<meta charset="utf-8">
