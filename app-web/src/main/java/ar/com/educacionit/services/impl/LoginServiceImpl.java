@@ -25,22 +25,25 @@ public class LoginServiceImpl implements LoginService {
 	public Users getUserByUserNameAndPassword(String username, String passwordFromHtml) throws ServiceException {
 		Users users = null;
 		try {
-			users = this.userDao.getUserByUserName(username);
+			Users usersTemp = this.userDao.getUserByUserName(username);
 			
 			//valido password
-			BCrypt.Result result = BCrypt.verifyer().verify(passwordFromHtml.getBytes(), users.getPassword().getBytes());				
+			BCrypt.Result result = BCrypt.verifyer().verify(passwordFromHtml.getBytes(), usersTemp.getPassword().getBytes());				
 			if(!result.verified) {
-				throw new ServiceException("Credenciales Invalidas", null);
-			}
-			
-			if(users != null) {
+				users = null;
+			} else {
+				users = this.userDao.getUserByUserName(username);
 				Socios socio = this.socioDao.getSociosByUserId(users.getId());
 				users.setSocio(socio);
 			}
-			return users;
+			/*
+			if(users != null) {
+				Socios socio = this.socioDao.getSociosByUserId(users.getId());
+				users.setSocio(socio);
+			}*/
 		} catch (GenericException e) {
-			e.printStackTrace();
-		}//ctrl+t
+			throw new ServiceException(e.getMessage(),e);
+		}
 		return users;
 	}
 

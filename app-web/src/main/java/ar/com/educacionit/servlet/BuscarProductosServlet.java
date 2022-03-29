@@ -1,6 +1,7 @@
 package ar.com.educacionit.servlet;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -23,8 +24,15 @@ public class BuscarProductosServlet extends HttpServlet {
 		
 		try {
 			List<Articulos> listado = service.findAll();
+			req.setAttribute("LISTADO", listado);
+			//mando el listado
+			getServletContext().getRequestDispatcher("/listado.jsp").forward(req,resp);
 		} catch(ServiceException e) {
-			e.printStackTrace();
+			List<Articulos> listado = new ArrayList<>();
+			//si no puede encontrar articulos con el findAll
+			//envio un listado vacio
+			req.setAttribute("LISTADO", listado);
+			getServletContext().getRequestDispatcher("/listado.jsp").forward(req,resp);
 		}
 	}
 }

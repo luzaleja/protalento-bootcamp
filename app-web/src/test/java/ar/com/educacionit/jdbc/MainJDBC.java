@@ -58,6 +58,7 @@ public class MainJDBC {
 			Date fechaAlta = res.getDate("fecha_alta");
 			String direccion = res.getString("direccion");
 			Long paisId = res.getLong("paises_id");
+			Long userId = res.getLong("users_id");
 			
 			
 			
@@ -65,7 +66,7 @@ public class MainJDBC {
 			//o el nombre, por ejemplo
 			//Long id = res.getLong("ID");
 			
-			Socios socios = new Socios(id,nombre,apellido,email,direccion,paisId);
+			Socios socios = new Socios(id,nombre,apellido,email,direccion,paisId,userId);
 			
 			System.out.println(socios);
 		}

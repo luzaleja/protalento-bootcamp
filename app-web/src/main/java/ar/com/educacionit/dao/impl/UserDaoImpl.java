@@ -17,10 +17,10 @@ public class UserDaoImpl implements UserDao {
 	@Override
 	public Users getUserByUserName(String username) throws GenericException {
 		
-		Users entity = null;
-		
 		String sql = "SELECT * FROM users WHERE UPPER(username) = '" + username.toUpperCase() +"'";
 		
+		Users entity = null;
+
 		//connection
 		try (Connection con = AdministradorDeConexiones.obtenerConexion();){
 			

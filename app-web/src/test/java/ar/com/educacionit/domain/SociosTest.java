@@ -17,13 +17,14 @@ public class SociosTest {
 		String email = "unmail3@mail.com";
 		String direccion = "calle 13";
 		Long pais = 1l; //1=ARG, 2=COL, 3=BRA, ETC
+		Long userId = 1l;
 		
 		//Socios ss = new SociosServiceImpl().getOne(1l);
 		//esto funciona porque el getOne usa el SociosDao para traer una variable de tipo Socios
 		//System.out.println(ss);
 		
 		SociosService service = new SociosServiceImpl();
-		Socios socio = new Socios(nombre,apellido,email,direccion,pais);
+		Socios socio = new Socios(nombre,apellido,email,direccion,pais,userId);
 		service.save(socio);
 		
 		

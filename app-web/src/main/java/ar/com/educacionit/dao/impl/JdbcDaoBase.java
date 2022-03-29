@@ -40,16 +40,10 @@ public abstract class JdbcDaoBase<T extends Entity> implements GenericDao<T> {
 		
 		String sql = "SELECT * FROM " + this.tabla + " WHERE ID = " + id;
 		
-		List<T> list = null;
-					
-		try {
-			list = this.findBySQL(sql);
+		List<T> list = this.findBySQL(sql);
 			
-			if(!list.isEmpty()) {
-				entity = list.get(0);
-			}
-		} catch (Exception e) {
-			throw new GenericException("No se pudo consultar: " + sql,e);
+		if(!list.isEmpty()) {
+			entity = list.get(0);
 		}
 		return entity;
 	}
@@ -197,7 +191,7 @@ public abstract class JdbcDaoBase<T extends Entity> implements GenericDao<T> {
 	protected abstract void save(PreparedStatement st, T entity) throws SQLException;
 	//cuando tenemos un metodo abstracto, los hijos estan obligados a implementarlos
 	//entonces podemos usar el getSaveSQL aca así no esté aún con el codigo implementado aca
-		public abstract String getSaveSQL();
+	public abstract String getSaveSQL();
 
 	protected abstract void update(PreparedStatement st, T entity) throws SQLException;
 	public abstract String getUpdateSQL();

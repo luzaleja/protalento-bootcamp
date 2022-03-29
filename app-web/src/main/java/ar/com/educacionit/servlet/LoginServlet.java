@@ -37,9 +37,11 @@ public class LoginServlet extends HttpServlet {
 		
 			if(user == null) {
 				target = ViewEnums.LOGIN;
-			}else {
-				//puedo guardar el usuario en el request o en la session
-				//lo guardamos en la session para que siga disponible durante la sesion
+			} else {
+				//si el usuario existe, es decir, no es null, lo quiero guardar
+				//lo puedo guardar en el request o en la session
+				//como es un usuario con password, es mejor guardarlo
+				//en la sesion
 				req.getSession().setAttribute("usuario", user);
 			}
 		} catch (ServiceException e) {			

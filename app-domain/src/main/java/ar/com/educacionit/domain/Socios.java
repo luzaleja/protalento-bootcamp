@@ -14,24 +14,25 @@ public class Socios implements Entity {
 	private Long paisesId;
 	private Date fechaAlta;
 	
+	private Long usersId;
+	
 	// constructor con id
 
 	public Socios() {
 		//constructor por defecto
 	}
 	
-	public Socios(Long id, String nombre, String apellido, String email, String direccion, Long paisesId) {
-		super();
+	public Socios(Long id, String nombre, String apellido, String email, String direccion, Long paisesId, Long usersId) {
 		this.id = id;
 		this.nombre = nombre;
 		this.apellido = apellido;
 		this.email = email;
 		this.direccion = direccion;
 		this.paisesId = paisesId;
+		this.usersId = usersId;
 	}
 
-	public Socios(Long id, String nombre, String apellido, String email, String direccion, Long paisesId, Date fechaAlta) {
-		super();
+	public Socios(Long id, String nombre, String apellido, String email, String direccion, Long paisesId, Date fechaAlta, Long usersId) {
 		this.id = id;
 		this.nombre = nombre;
 		this.apellido = apellido;
@@ -39,17 +40,18 @@ public class Socios implements Entity {
 		this.direccion = direccion;
 		this.paisesId = paisesId;
 		this.fechaAlta = fechaAlta;
+		this.usersId = usersId;
 	}
 
 	// constructor sin id
 	
-	public Socios(String nombre, String apellido, String email, String direccion, Long paisesId) {
-		super();
+	public Socios(String nombre, String apellido, String email, String direccion, Long paisesId, Long usersId) {
 		this.nombre = nombre;
 		this.apellido = apellido;
 		this.email = email;
 		this.direccion = direccion;
 		this.paisesId = paisesId;
+		this.usersId = usersId;
 	}
 
 	// getters y setters
@@ -109,11 +111,19 @@ public class Socios implements Entity {
 	public void setFechaAlta(Date fechaAlta) {
 		this.fechaAlta = fechaAlta;
 	}
+	
+	public Long getUsersId() {
+		return usersId;
+	}
+
+	public void setUsersId(Long usersId) {
+		this.usersId = usersId;
+	}
 
 	// toString
 	public String toString() {
 		return "Socios [id=" + id + ", nombre=" + nombre + ", apellido=" + apellido + ", email=" + email
-				+ ", direccion=" + direccion + ", paisesId=" + paisesId + "]";
+				+ ", direccion=" + direccion + ", paisesId=" + paisesId + ", usersId=" + usersId + "]";
 	}
 	
 	
