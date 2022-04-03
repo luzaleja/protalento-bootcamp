@@ -9,6 +9,7 @@ import ar.com.educacionit.domain.Socios;
 import ar.com.educacionit.domain.Users;
 import ar.com.educacionit.services.LoginService;
 import ar.com.educacionit.services.exceptions.ServiceException;
+import ar.com.educacionit.web.enums.ViewKeysEnum;
 import at.favre.lib.crypto.bcrypt.BCrypt;
 
 public class LoginServiceImpl implements LoginService {
@@ -23,28 +24,26 @@ public class LoginServiceImpl implements LoginService {
 	
 	@Override
 	public Users getUserByUserNameAndPassword(String username, String passwordFromHtml) throws ServiceException {
-		Users users = null;
+		
 		try {
-			Users usersTemp = this.userDao.getUserByUserName(username);
+			Users users = this.userDao.getUserByUserName(username);
+			//getUserByUserName retorna null si no existe el usuario
+			//envia un error GE si no se puedo conectar a la base de datos, etc
 			
-			//valido password
-			BCrypt.Result result = BCrypt.verifyer().verify(passwordFromHtml.getBytes(), usersTemp.getPassword().getBytes());				
-			if(!result.verified) {
-				users = null;
-			} else {
-				users = this.userDao.getUserByUserName(username);
-				Socios socio = this.socioDao.getSociosByUserId(users.getId());
-				users.setSocio(socio);
-			}
-			/*
 			if(users != null) {
+				//valido password
+				BCrypt.Result result = BCrypt.verifyer().verify(passwordFromHtml.getBytes(), users.getPassword().getBytes());				
+				if(!result.verified) {
+					throw new ServiceException(ViewKeysEnum.USUARIO_PASSWORD_INVALIDO.getParam(), null);
+				} 
+				
 				Socios socio = this.socioDao.getSociosByUserId(users.getId());
 				users.setSocio(socio);
-			}*/
+			}	
+			return users;
 		} catch (GenericException e) {
 			throw new ServiceException(e.getMessage(),e);
 		}
-		return users;
 	}
 
 }
