@@ -10,9 +10,9 @@ public class AdministradorDeConexiones {
 
 	public static Connection obtenerConexion() throws GenericException {
 		
-		String url = "jdbc:postgresql://ec2-52-203-164-61.compute-1.amazonaws.com:5432/d80430r61b06e8";
-		String user = "xnvixqoqtrajjd";
-		String password = "8a71219d08a848290aa153e3af48d9f4c0a82bcc78f9d9c8e686ad918655b424";
+		String url = "jdbc:postgresql://ec2-44-194-92-192.compute-1.amazonaws.com:5432/d535m72im9huc4";
+		String user = "volzirmyhfjrvf";
+		String password = "f645994df058e08a07d0159d061bba0ff54dbd4772597b716051d7b7d7a9d097";
 		String driverName = "org.postgresql.Driver"; //depende del motor 
 		//es el paquete donde esta el driver
 		//en la dependencia MAVEN
@@ -28,13 +28,5 @@ public class AdministradorDeConexiones {
 		}
 		
 	}
-	
-	//public static void main(String[] args) {
-		
-	//	try (Connection con = AdministradorDeConexiones.obtenerConexion();) {
-	//		System.out.println("Conexion obtenida");
-	//	} catch (Exception e) {
-	//		e.printStackTrace();
-	//	}
-	//}
+
 }
