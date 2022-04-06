@@ -10,6 +10,17 @@
 	</head>
 	<body>
 		<main>
+			<%
+				Collection<Carrousel> carrousel = (Collection<Carrousel>)request.getAttribute("imagenes");
+			%>
+			<%
+				if(carrousel == null) {
+			%>
+				<jsp:forward page="/CarrouselServlet"></jsp:forward>
+			<%
+				} else if (carrousel != null) {
+					
+			%>
 			<section class="container-fluid">
 				<div class="row d-flex justify-content-center">
 					<h1 class="text-center">Paisajes Naturales</h1>
@@ -21,12 +32,6 @@
 						    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
 						  </div>
 						  <div class="carousel-inner">
-						  	<%
-						  		CarrouselService cs = new CarrouselServiceImpl();
-						  	%>
-						  	<%
-						  		Collection<Carrousel> carrousel = cs.getActiveCarrousel();
-						  	%>
 						  	<%
 						  		Carrousel imagen1 = carrousel.iterator().next();
 						  	%>
@@ -61,6 +66,9 @@
 					</div>
 				</div>
 			</section>
+			<%
+				}
+			%>
 		</main>
 		<jsp:include page="scripts.jsp"></jsp:include>
 	</body>
