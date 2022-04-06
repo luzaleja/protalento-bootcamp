@@ -9,6 +9,8 @@ import java.util.Collection;
 import java.util.Date;
 import java.util.Iterator;
 
+import javax.servlet.http.Part;
+
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
@@ -19,6 +21,9 @@ import ar.com.educacionit.domain.Articulos;
 
 public class XLSXFileParser extends BaseFile implements IParser<Collection<Articulos>> {
 
+	public XLSXFileParser(Part filePart) {
+		super(filePart);
+	}
 	public XLSXFileParser(String path) {
 		super(path);
 	}

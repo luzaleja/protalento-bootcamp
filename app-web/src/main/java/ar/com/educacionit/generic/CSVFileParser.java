@@ -7,10 +7,15 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
 
+import javax.servlet.http.Part;
+
 import ar.com.educacionit.domain.Articulos;
 
 public class CSVFileParser extends BaseFile implements IParser<Collection<Articulos>> {
 	
+	public CSVFileParser(Part filePart) {
+		super(filePart);
+	}
 	public CSVFileParser(String path) {
 		super(path);
 	}

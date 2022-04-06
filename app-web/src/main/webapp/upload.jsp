@@ -13,7 +13,7 @@
 				<div class="row d-flex justify-content-center">
 					<h1>Cargar Archivo</h1>
 					<div class="col-6">
-						<form action="<%=request.getContextPath()%>/UploadFileServlet" method="POST" enctype="multipart/formdata">
+						<form action="<%=request.getContextPath()%>/controllers/UploadServlet" method="POST" enctype="multipart/form-data">
 							<div class="mb-3">
 							  <label for="formFile" class="form-label">Cargar Archivo de Productos(csv/xlsx)</label>
 							  <input class="form-control" type="file" name="<%=ViewKeysEnum.UPLOAD_FILE.getParam()%>" id="formFile">
