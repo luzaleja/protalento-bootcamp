@@ -34,9 +34,9 @@ public class SessionFilter implements Filter {
 		
 		HttpServletRequest req = (HttpServletRequest)request;
 		
-		//String url = req.getRequestURI(); //http://localhost:8080/app-web/
+		//String url = req.getRequestURI(); // /app-web/controllers/
 		
-		//String contextPath = req.getContextPath();
+		//String contextPath = req.getContextPath(); // /app-web
 		
 		//definir las rutas o url a las cuales no se aplica este filtro
 
@@ -46,15 +46,19 @@ public class SessionFilter implements Filter {
 		
 		//boolean mustValidate = false;
 		
-		//for(String path : validatePath) 
+		//for(String path : validatePath) {
 		//	if(url.contains(path)) {
 		//		mustValidate = true;
 		//		break;
 		//	}
+		//}
 		
 		/*
 		for(int i = 0; !mustValidate && i < validatePath.size(); i++) {
-			validatePath.contains(url);
+			if(url.contains(validatePath.get(i))) {
+		//		mustValidate = true;
+		//		break;
+		//	}
 		}
 		*/
 		

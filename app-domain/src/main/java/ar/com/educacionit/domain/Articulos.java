@@ -6,8 +6,8 @@ public class Articulos implements Entity {
 	
 	private Long id;
 	private String titulo;
-	private String codigo;
 	private Date fechaCreacion;
+	private String codigo;
 	private Double precio;
 	private Long stock;
 	private Long marcasId;
@@ -27,11 +27,11 @@ public class Articulos implements Entity {
 	// hacia la base de datos
 	// no es para generar un registro
 
-	public Articulos(String titulo, String codigo, Date fechaCreacion, Double precio, Long stock, Long marcasId,
+	public Articulos(String titulo, Date fechaCreacion, String codigo, Double precio, Long stock, Long marcasId,
 			Long categoriasId) {
 		this.titulo = titulo;
-		this.codigo = codigo;
 		this.fechaCreacion = fechaCreacion;
+		this.codigo = codigo;
 		this.precio = precio;
 		this.stock = stock;
 		this.marcasId = marcasId;
@@ -164,7 +164,7 @@ public class Articulos implements Entity {
 	}
 	
  	public String toString() {
-		return "Articulo [id=" + id + ", titulo=" + titulo + ", fechaCreacion=" + fechaCreacion + ", codigo=" + codigo
+		return "Articulo [id=" + id + ", titulo=" + fechaCreacion + ", codigo=" + titulo + ", fechaCreacion=" + codigo
 				+ ", precio=" + precio + ", stock=" + stock + ", marcasId=" + marcasId + ", categoriasId=" + categoriasId
 				+ "]";
 	}

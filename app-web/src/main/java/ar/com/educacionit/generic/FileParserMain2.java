@@ -1,5 +1,6 @@
 package ar.com.educacionit.generic;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
 import ar.com.educacionit.domain.Articulos;
@@ -19,7 +20,7 @@ public class FileParserMain2 {
 		
 		try {
 			articulos = parser.parse();
-		} catch (ParseException e) {
+		} catch (ParseException | IOException e) {
 			e.printStackTrace();
 		}
 		
