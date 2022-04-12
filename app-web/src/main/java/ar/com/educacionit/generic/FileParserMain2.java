@@ -20,7 +20,7 @@ public class FileParserMain2 {
 		
 		try {
 			articulos = parser.parse();
-		} catch (ParseException | IOException e) {
+		} catch (ParseException e) {
 			e.printStackTrace();
 		}
 		

@@ -79,12 +79,11 @@ public class CSVFileParser extends BaseFile implements IParser<Collection<Articu
 		return articulos;
 	}
 	
-	public Collection<Articulos> parse() throws ParseException, IOException {
+	public Collection<Articulos> parse() throws ParseException {
 		
 		InputStream is = null;
 		FileReader fileReader = null;
 		BufferedReader br = null;
-		Collection<Articulos> articulos = new ArrayList<>();
 		
 		try {
 			//detectar si tiene path como String o Part
@@ -99,15 +98,18 @@ public class CSVFileParser extends BaseFile implements IParser<Collection<Articu
 				fileReader = new FileReader(file);
 				br = new BufferedReader(fileReader);
 			}	
-			articulos = this.buildArchivos(br);
+			return this.buildArchivos(br);
+		} catch (IOException ie) {
+			throw new ParseException(ie.getMessage(),ie);
 		} finally {
 			if(br != null) {
-				br.close();
+				try {
+					br.close();
+				} catch (IOException e) {
+					throw new ParseException(e.getMessage(),e);
+				}
 			}
 		}
-		
-		//lista vacia de articulos
-		return articulos;
 	}
 
 	private Collection<Articulos> buildArchivos(BufferedReader br) throws IOException {

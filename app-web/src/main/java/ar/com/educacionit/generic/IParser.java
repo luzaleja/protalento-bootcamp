@@ -4,7 +4,7 @@ import java.io.IOException;
 
 public interface IParser<T> {
 	
-	public T parse() throws ParseException, IOException; 
+	public T parse() throws ParseException; 
 	//T puede ser cualquier cosa, como por ejemplo una Collection<T>
 	
 	//public Collection<T> parseFile();

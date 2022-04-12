@@ -31,7 +31,14 @@ public class UploadServlet extends BaseServlet {
 		
 		ViewEnums target = ViewEnums.UPLOAD_PREVIEW;
 		
-		if(filePart.getSize() > 0) {
+		//primero validamos que venga un archivo, si esta bien avanzamos
+		if(filePart == null | filePart.getSize() == 0) {
+			target = ViewEnums.UPLOAD;
+			addAttribute(req,ViewKeysEnum.ERROR_GENERAL,"Debe seleccionar un archivo");
+			redirect(target,req,resp);
+		}
+			
+		if(filePart != null && filePart.getSize() > 0) {
 			
 			String fileName = Paths.get(filePart.getSubmittedFileName()).getFileName().toString();
 		
@@ -54,7 +61,7 @@ public class UploadServlet extends BaseServlet {
 			if(parser != null) {
 				try {
 					Collection<Articulos> articulos = parser.parse();
-					super.addAttribute(req, ViewKeysEnum.UPLOAD_PREVIEW_KEY, articulos);
+					super.addAttribute(req.getSession(), ViewKeysEnum.UPLOAD_PREVIEW_KEY, articulos);
 				} catch (ParseException e) {
 					super.addAttribute(req, ViewKeysEnum.ERROR_GENERAL, e.getMessage());
 					target = ViewEnums.UPLOAD;
@@ -65,6 +72,7 @@ public class UploadServlet extends BaseServlet {
 				
 			}
 			
+			//req.getSession().setAttribute(Enumerable.ENUMPARAM,ViewKeysEnum.UPLOAD_PREVIEW_KEY);
 			super.redirect(target, req, resp);
 		}
 	}
