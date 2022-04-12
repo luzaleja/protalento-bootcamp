@@ -16,7 +16,7 @@ public abstract class BaseFile {
 	
 	public BaseFile(Part filePart) {
 		if(filePart == null) {
-			throw new IllegalArgumentException("Debe indicar un part de archivo");
+			throw new IllegalArgumentException("Debe ingresar un part valido");
 		}
 		this.filePart = filePart;
 	}

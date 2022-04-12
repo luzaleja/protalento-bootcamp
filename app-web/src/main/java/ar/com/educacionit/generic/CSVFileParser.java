@@ -52,7 +52,7 @@ public class CSVFileParser extends BaseFile implements IParser<Collection<Articu
 				
 				//leemos el resto de lineas
 				while(lineaLeida != null) {
-					//ahora que tengo la linea (linea 48), tengo que partirlo
+					//ahora que tengo la linea (linea 51), tengo que partirlo
 					//por el ; , y guardar en un array de String
 					
 					//logica de parseo
@@ -79,11 +79,12 @@ public class CSVFileParser extends BaseFile implements IParser<Collection<Articu
 		return articulos;
 	}
 	
-public Collection<Articulos> parse() throws ParseException, IOException {
+	public Collection<Articulos> parse() throws ParseException, IOException {
 		
 		InputStream is = null;
 		FileReader fileReader = null;
 		BufferedReader br = null;
+		Collection<Articulos> articulos = new ArrayList<>();
 		
 		try {
 			//detectar si tiene path como String o Part
@@ -93,23 +94,24 @@ public Collection<Articulos> parse() throws ParseException, IOException {
 			}else {
 				File file = new File(super.getFilePath());
 				if(!file.exists()) {
-					throw new ParseException("No existe el archivo:" + super.getFilePath());
+					throw new ParseException("No existe el archivo: " + super.getFilePath());
 				}			
 				fileReader = new FileReader(file);
 				br = new BufferedReader(fileReader);
-			}				
-		}finally {
+			}	
+			articulos = this.buildArchivos(br);
+		} finally {
 			if(br != null) {
 				br.close();
 			}
 		}
 		
 		//lista vacia de articulos
-		return this.buildArchivos(br);
+		return articulos;
 	}
 
 	private Collection<Articulos> buildArchivos(BufferedReader br) throws IOException {
-		Collection<Articulos> articulos = new ArrayList<Articulos>();
+		Collection<Articulos> articulos = new ArrayList<>();
 
 		String lineaLeida = br.readLine();
 		
@@ -123,9 +125,9 @@ public Collection<Articulos> parse() throws ParseException, IOException {
 			String titulo = datos[0];// => titulo
 			String codigo = datos[1];// => titulo
 			String precio = datos[2];// => precio
-			String stock = datos[3];// => precio
-			String categoria = datos[4];// => precio
-			String marca = datos[5];// => precio
+			String stock = datos[3];// => stock
+			String categoria = datos[4];// => categoria
+			String marca = datos[5];// => marca
 		
 			//validador!!
 			//Validador.getValidar(Enum.paraArticulo).validate(datos);

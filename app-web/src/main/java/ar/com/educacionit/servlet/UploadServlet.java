@@ -44,7 +44,7 @@ public class UploadServlet extends BaseServlet {
 				parser = new CSVFileParser(filePart);
 				break;
 			case "xls":
-				parser = new XLSXFileParser(ext);
+				parser = new XLSXFileParser(filePart);
 				break;
 			default:
 				parser = null;
@@ -54,14 +54,14 @@ public class UploadServlet extends BaseServlet {
 			if(parser != null) {
 				try {
 					Collection<Articulos> articulos = parser.parse();
+					super.addAttribute(req, ViewKeysEnum.UPLOAD_PREVIEW_KEY, articulos);
 				} catch (ParseException e) {
-					//req.setAttribute(ViewKeysEnum.ERROR_GENERAL.getParam(), e.getMessage());
 					super.addAttribute(req, ViewKeysEnum.ERROR_GENERAL, e.getMessage());
 					target = ViewEnums.UPLOAD;
 				}
 			} else {
 				target = ViewEnums.UPLOAD;
-				super.addAttribute(req, ViewKeysEnum.ERROR_GENERAL, "");
+				super.addAttribute(req, ViewKeysEnum.ERROR_GENERAL, "Formato no soportado");
 				
 			}
 			

@@ -81,7 +81,6 @@ public abstract class JdbcDaoBase<T extends Entity> implements GenericDao<T> {
 		}	
 		
 		String sql = "DELETE FROM " + this.tabla + " WHERE id =? ";
-		System.out.println(sql);
 		
 		//connection
 		try (Connection con = AdministradorDeConexiones.obtenerConexion();){
