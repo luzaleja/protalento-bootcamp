@@ -1,8 +1,8 @@
-package practicaAdicionalSemana16.servlet;
+package practicaAdicionalSemana17.servlet;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Collection;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -12,27 +12,28 @@ import javax.servlet.http.HttpServletResponse;
 
 import ar.com.educacionit.services.exceptions.ServiceException;
 import practicaAdicionalSemana16.entities.Imagenes;
-import practicaAdicionalSemana16.service.CarrouselService;
-import practicaAdicionalSemana16.service.impl.CarrouselServiceImpl;
+import practicaAdicionalSemana17.service.ListadoService;
+import practicaAdicionalSemana17.service.impl.ListadoServiceImpl;
 
-@WebServlet("/CarrouselServlet")
-public class CarrouselServlet extends HttpServlet {
-
+@WebServlet("/ListadoImagenesServlet")
+public class ListadoImagenesServlet extends HttpServlet {
+	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		//buscar todas las imagenes
+		ListadoService ls = new ListadoServiceImpl();
 		
-		CarrouselService cs = new CarrouselServiceImpl();
-		
-		Collection<Imagenes> carrousel = new ArrayList<>();
+		List<Imagenes> images = new ArrayList<>();
 		
 		try {
-			carrousel = cs.getActiveCarrousel();
+			images = ls.findAll();
 		} catch (ServiceException e) {
 			e.printStackTrace();
 		}
 		
-		req.setAttribute("imagenes", carrousel);
+		req.getSession().setAttribute("listadoImagenes", images);
 		
-		getServletContext().getRequestDispatcher("/index.jsp").forward(req, resp);
+		getServletContext().getRequestDispatcher("/tabla.jsp").forward(req, resp);
 	}
+	
 }

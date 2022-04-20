@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 import ar.com.educacionit.services.exceptions.ServiceException;
-import practicaAdicionalSemana16.entities.Carrousel;
+import practicaAdicionalSemana16.entities.Imagenes;
 import practicaAdicionalSemana16.service.CarrouselService;
 
 public class prueba {
@@ -13,7 +13,7 @@ public class prueba {
 		
 		CarrouselService cs = new CarrouselServiceImpl();
 		
-		Collection<Carrousel> carrousel = new ArrayList<>();
+		Collection<Imagenes> carrousel = new ArrayList<>();
 		
 		try {
 			carrousel = cs.getActiveCarrousel();
@@ -21,10 +21,10 @@ public class prueba {
 			e.printStackTrace();
 		}
 	
-		Carrousel c1 = carrousel.iterator().next();
+		Imagenes c1 = carrousel.iterator().next();
 		System.out.println(c1.getImagen());
 		
-		for(Carrousel image : carrousel) {
+		for(Imagenes image : carrousel) {
 			if(image.getId() == c1.getId()) {
 				continue;
 			} else {

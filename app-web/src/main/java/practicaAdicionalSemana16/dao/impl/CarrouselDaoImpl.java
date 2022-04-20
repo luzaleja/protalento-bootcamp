@@ -11,17 +11,17 @@ import ar.com.educacionit.dao.exception.GenericException;
 import ar.com.educacionit.dao.jdbc.AdministradorDeConexiones;
 import ar.com.educacionit.dao.jdbc.util.DTOUtils;
 import practicaAdicionalSemana16.dao.CarrouselDao;
-import practicaAdicionalSemana16.entities.Carrousel;
+import practicaAdicionalSemana16.entities.Imagenes;
 
 public class CarrouselDaoImpl implements CarrouselDao {
 
 	@Override
-	public Collection<Carrousel> getActiveCarrousel() throws GenericException {
+	public Collection<Imagenes> getActiveCarrousel() throws GenericException {
 
 		//Solo queremos los que están activos
 		String sql = "SELECT * FROM carrousel WHERE activo = b'1'";
 		
-		Collection<Carrousel> carrouselActivo = new ArrayList<>();
+		Collection<Imagenes> carrouselActivo = new ArrayList<>();
 
 		//connection
 		try (Connection con = AdministradorDeConexiones.obtenerConexion();){
@@ -30,9 +30,9 @@ public class CarrouselDaoImpl implements CarrouselDao {
 				
 				try (ResultSet res = st.executeQuery(sql)) {
 
-					List<Carrousel> list = new ArrayList<>();
+					List<Imagenes> list = new ArrayList<>();
 					
-					list = DTOUtils.populateDTOs(Carrousel.class,res);
+					list = DTOUtils.populateDTOs(Imagenes.class,res);
 					
 					if(!list.isEmpty()) {
 						carrouselActivo = list;

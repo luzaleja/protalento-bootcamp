@@ -1,4 +1,4 @@
-<%@page import="practicaAdicionalSemana16.entities.Carrousel"%>
+<%@page import="practicaAdicionalSemana16.entities.Imagenes"%>
 <%@page import="java.util.Collection"%>
 <%@page import="practicaAdicionalSemana16.service.impl.CarrouselServiceImpl"%>
 <%@page import="practicaAdicionalSemana16.service.CarrouselService"%>
@@ -11,20 +11,19 @@
 	<body>
 		<main>
 			<%
-				Collection<Carrousel> carrousel = (Collection<Carrousel>)request.getAttribute("imagenes");
+					Collection<Imagenes> carrousel = (Collection<Imagenes>)request.getAttribute("imagenes");
 			%>
 			<%
-				if(carrousel == null) {
+					if(carrousel == null) {
 			%>
 				<jsp:forward page="/CarrouselServlet"></jsp:forward>
 			<%
-				} else if (carrousel != null) {
-					
+					} else if (carrousel != null) {
 			%>
-			<section class="container-fluid">
+			<section class="container">
 				<div class="row d-flex justify-content-center">
 					<h1 class="text-center">Paisajes Naturales</h1>
-					<div class="col-6">
+					<div class="col-12">
 						<div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
 						  <div class="carousel-indicators">
 						    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
@@ -33,13 +32,13 @@
 						  </div>
 						  <div class="carousel-inner">
 						  	<%
-						  		Carrousel imagen1 = carrousel.iterator().next();
+						  		Imagenes imagen1 = carrousel.iterator().next();
 						  	%>
 							    <div class="carousel-item active">
 							      <img src="<%=imagen1.getImagen()%>" class="d-block w-100" alt="<%=imagen1.getDescripcion()%>">
 							    </div>
 							<%
-								for(Carrousel imagen : carrousel) {
+								for(Imagenes imagen : carrousel) {
 							%>
 						    	<%
 						    		if(imagen.getId() != imagen1.getId()) {
@@ -63,6 +62,11 @@
 						    <span class="visually-hidden">Next</span>
 						  </button>
 						</div>
+					</div>
+				</div>
+				<div class="row d-flex justify-content-end">
+					<div class="col-xs-12 col-md-6 col-lg-4">
+						<a class="btn btn-primary" href="<%=request.getContextPath()%>/ListadoImagenesServlet" role="button">Listado de imagenes</a>
 					</div>
 				</div>
 			</section>

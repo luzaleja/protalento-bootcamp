@@ -1,6 +1,6 @@
 package practicaAdicionalSemana16.entities;
 
-public class Carrousel {
+public class Imagenes {
 	
 	private Long id;
 	private String descripcion;
@@ -8,11 +8,16 @@ public class Carrousel {
 	private Integer activo;
 	
 	
-	public Carrousel() {
+	public Imagenes() {
 
 	}
 
-	public Carrousel(Long id, String descripcion, String imagen, Integer activo) {
+	public Imagenes(Long id, String imagen) {
+		this.id = id;
+		this.imagen = imagen;
+	}
+	
+	public Imagenes(Long id, String descripcion, String imagen, Integer activo) {
 		this.id = id;
 		this.descripcion = descripcion;
 		this.imagen = imagen;
