@@ -14,7 +14,7 @@
 				<div class="row d-flex justify-content-center">
 					<h1 class="text-center">Listado de Imagenes</h1>
 					<div class="col-12">
-						<form action="/app-web/EditarImagenURLServlet" method="POST">
+						<form action="/app-web/EditarImagenURLServlet" method="GET">
 							<h3>Elige la imagen a editar</h3>
 							<select class="form-select" multiple aria-label="multiple select example" name="imagenSeleccionada">
 								<%

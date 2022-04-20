@@ -17,7 +17,7 @@ import practicaAdicionalSemana17.service.impl.ListadoServiceImpl;
 public class EditarImagenURLServlet extends HttpServlet {
 	
 	@Override
-	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
 		//traemos los datos del request
 		String idStr = req.getParameter("imagenSeleccionada");
