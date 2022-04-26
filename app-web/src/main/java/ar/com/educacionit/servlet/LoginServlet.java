@@ -8,6 +8,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 import ar.com.educacionit.domain.Users;
 import ar.com.educacionit.services.LoginService;
 import ar.com.educacionit.services.exceptions.ServiceException;
@@ -18,17 +20,19 @@ import ar.com.educacionit.web.enums.ViewEnums;
 @WebServlet("/LoginServlet")
 public class LoginServlet extends HttpServlet {
 
+	private ObjectMapper objectMapper = new ObjectMapper();
+	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
-		//capturo los parametros enviados por el html/jsp
-		String usernameFromHtml = req.getParameter(ViewKeysEnum.USERNAME.getParam());
-		String passwordFromHtml = req.getParameter(ViewKeysEnum.PASSWORD.getParam());
+		String data = req.getParameter("data");
 	
+		LoginDTO loginDTO = objectMapper.readValue(data, LoginDTO.class);
+				
 		ViewEnums target = ViewEnums.LOGIN_SUCCESS;
 
 		//validaciones
-		if(isValid(usernameFromHtml,passwordFromHtml)) {
+		if(isValid(loginDTO.getUsername(), loginDTO.getPassword())) {
 
 			//LOGIN SERVICE
 			LoginService ls = new LoginServiceImpl();
@@ -36,7 +40,7 @@ public class LoginServlet extends HttpServlet {
 			Users user;
 			
 			try {
-				user = ls.getUserByUserNameAndPassword(usernameFromHtml,passwordFromHtml);
+				user = ls.getUserByUserNameAndPassword(loginDTO.getUsername(), loginDTO.getPassword());
 				
 				if(user == null) {
 					req.setAttribute(ViewKeysEnum.ERROR_GENERAL.getParam(), ViewKeysEnum.USUARIO_PASSWORD_INVALIDO.getParam());

@@ -13,8 +13,9 @@ import ar.com.educacionit.domain.Articulos;
 import ar.com.educacionit.services.ArticulosService;
 import ar.com.educacionit.services.exceptions.ServiceException;
 import ar.com.educacionit.services.impl.ArticulosServiceImpl;
+import ar.com.educacionit.web.enums.ViewKeysEnum;
 
-@WebServlet("/ListadoServlet")
+@WebServlet("/controllers/ListadoServlet")
 public class ListadoServlet extends HttpServlet {
 	//Los servlet no tienen el metodo main, porque no son de tipo consola
 	//sino web
@@ -38,7 +39,7 @@ public class ListadoServlet extends HttpServlet {
 			List<Articulos> articulos = articuloService.findAll();
 			
 			//guardamos el listado en un lugar llamado "request"
-			request.setAttribute("LISTADO", articulos);
+			request.setAttribute(ViewKeysEnum.LISTADO.getParam(), articulos);
 			
 			//ahora envia el request con el nuevo atributo, que es la lista
 			//de articulos, a la otra pagina

@@ -68,5 +68,13 @@ public class AbstractBaseService<T> implements GenericService<T> {
 			throw new ServiceException("Error consultando listado",e);
 		}
 	}
+	
+	public List<T> findAllBy(String criteria) throws ServiceException{
+		try {
+			return this.genericDao.findBySQL(criteria);
+		} catch (GenericException e) {
+			throw new ServiceException("Error consultando listado", e);
+		}
+	}
 
 }

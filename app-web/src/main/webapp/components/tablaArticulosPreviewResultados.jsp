@@ -70,17 +70,18 @@
   </tbody>
 </table>
 <div class="row">
-	<div class="col-xs-12 col-md-6 col-lg-4">
-		<form action="<%=request.getContextPath()%>/controllers/GenerarArchivoErrorSevlet" method="POST" target="_new">
+	<div class="col-12">
+		<form action="<%=request.getContextPath()%>/controllers/GenerarArchivoErrorSevlet"
+				method="POST" target="_new">
 			<div class="input-group mb-3">
 				<select name="formato" class="form-select" aria-label="Default select example">
-				  <option value="1" selected>CSV</option>
-				  <option value="2">XSL</option>
-				  <option value="3">PDF</option>
+				  <option value="csv" selected>CSV</option>
+				  <option value="xls">XLS</option>
+				  <option value="pdf">PDF</option>
 				</select>
-				<a class="btn btn-primary" href="<%=request.getContextPath()%>/controllers/CargarProductosServlet" role="button">
+				<button class="btn btn-primary">
 					Generar Archivo de Errores
-				</a>
+				</button>
 			</div>
 		</form>
 		
