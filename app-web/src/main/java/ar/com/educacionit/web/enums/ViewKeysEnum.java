@@ -5,6 +5,7 @@ public enum ViewKeysEnum implements Enumerable {
 	USERNAME("username"),
 	PASSWORD("password"),
 	ERROR_GENERAL("error"),
+	EXITO("exito"),
 	USUARIO_PASSWORD_INVALIDO("usuario/password incorrectos"),
 	USER("user"),
 	UPLOAD_FILE("uploadFile"), 
@@ -13,7 +14,11 @@ public enum ViewKeysEnum implements Enumerable {
 	ARTICULOS_OKS("articulos_oks"), 
 	FORMATO("formato"),
 	LISTADO("listado"),
-	CLAVE_BUSQUEDA("clave_busqueda")
+	CLAVE_BUSQUEDA("clave_busqueda"),
+	TOTAL("total"),
+	ID_PRODUCTO("id"),
+	MARCAS("marcas"),
+	CATEGORIAS("categorias")
 	;
 	
 	private String param;

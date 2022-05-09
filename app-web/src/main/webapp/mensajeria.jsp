@@ -1,6 +1,8 @@
 <%@page import="ar.com.educacionit.web.enums.ViewKeysEnum"%>
 <%
 	String error = (String)request.getAttribute(ViewKeysEnum.ERROR_GENERAL.getParam());	
+
+	String exito = (String)request.getAttribute(ViewKeysEnum.EXITO.getParam());
 %>
 
 <%
@@ -8,6 +10,16 @@
 %>
 	<div class="alert alert-danger" role="alert">
 		<%=error%>
+	</div>
+<%
+	}
+%>
+
+<%
+	if(exito != null) {
+%>
+	<div class="alert alert-success" role="alert">
+		<%=exito%>
 	</div>
 <%
 	}

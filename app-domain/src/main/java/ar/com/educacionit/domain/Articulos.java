@@ -27,10 +27,10 @@ public class Articulos implements Entity {
 	// hacia la base de datos
 	// no es para generar un registro
 
-	public Articulos(String titulo, Date fechaCreacion, String codigo, Double precio, Long stock, Long marcasId,
+	public Articulos(String titulo, String codigo, Double precio, Long stock, Long marcasId,
 			Long categoriasId) {
 		this.titulo = titulo;
-		this.fechaCreacion = fechaCreacion;
+		this.fechaCreacion = new Date();
 		this.codigo = codigo;
 		this.precio = precio;
 		this.stock = stock;

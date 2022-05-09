@@ -1,12 +1,11 @@
 package ar.com.educacionit.domain;
 
-import java.util.Date;
 
 public class ArticuloTest {
 	
 	public static void main(String[] args) {
 		//assert
-		Articulos miArticulo = new Articulos("titulo1", new Date(), "0001",  2500d, 5l, 1l, 1l);
+		Articulos miArticulo = new Articulos("titulo1", "0001",  2500d, 5l, 1l, 1l);
 	
 		miArticulo.getTitulo().equals("titulo1");
 		

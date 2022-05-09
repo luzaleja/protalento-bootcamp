@@ -120,7 +120,6 @@ public class CSVFileParser extends BaseFile implements IParser<Collection<Articu
 		//vuelvo a leer para tomar los "registros"
 		lineaLeida = br.readLine();
 		
-		Date fechaCrecion = new Date();
 		while(lineaLeida != null) {
 			
 			String[] datos = lineaLeida.split(";"); 
@@ -135,7 +134,7 @@ public class CSVFileParser extends BaseFile implements IParser<Collection<Articu
 			//Validador.getValidar(Enum.paraArticulo).validate(datos);
 						
 			Articulos unArticulo = new Articulos(
-				titulo,fechaCrecion,codigo,Double.parseDouble(precio),Long.parseLong(stock),Long.parseLong(marca), Long.parseLong(categoria)
+				titulo,codigo,Double.parseDouble(precio),Long.parseLong(stock),Long.parseLong(marca), Long.parseLong(categoria)
 			);
 			
 			articulos.add(unArticulo);
