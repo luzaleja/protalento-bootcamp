@@ -1,79 +1,59 @@
-function validarFormulario() {
+(function () {
+  'use strict'
+
+  // Fetch all the forms we want to apply custom Bootstrap validation styles to
+  var forms = document.querySelectorAll('.needs-validation')
+
+  // Loop over them and prevent submission
+  Array.prototype.slice.call(forms)
+    .forEach(function (form) {
+      form.addEventListener('submit', function (event) {
+        if (!form.checkValidity()) {
+          event.preventDefault()
+          event.stopPropagation()
+        }
+
+        form.classList.add('was-validated')
+      }, false)
+    })
+})()
+
+function isValid() {
+	const options = {
+			  keyboard: false
+			};
+			
+	const inputNombre = document.getElementById('nombre');
+	const inputEmail = document.getElementById('email');
+	const inputPais = document.getElementById('pais');
+	const inputEstadoCivil = document.getElementById('estadoCivilCasado');
+	const inputTerminos = document.getElementById('terminos');
 	
-	//capturamos los datos del formulario
-	let inputNombre = document.getElementById('nombre');
-	let inputEmail = document.getElementById('email');
-	let inputPais = document.getElementById('pais');
-	let inputEstadoCivil = document.getElementById('estadoCivil');
-	let inputTerminos = document.getElementById('terminos');
+	let valid = true;
 	
-	//obtenemos el valor
-	const valueNombre = inputNombre.value.trim();
-	const valueEmail = inputEmail.value.trim();
-	const valuePais = inputPais.value.trim();
-	const valueEstadoCivil = inputEstadoCivil.value.trim();
-	const valueTerminos = inputTerminos.value.trim();
+	if(inputNombre.classList.contains('invalid')) {
+		valid = false;
+	} 
 	
-	let nombreValid = true;
-	let emailValid = true;
-	let paisValid = true;
-	let estadoCivilValid = true;
-	let terminosValid = true;
+	if(inputEmail.classList.contains('invalid')) {
+		valid = false;
+	} 
 	
-	//revisamos que no vengan vacios y que cumplan con lo que queremos
-	//nombre: que no traiga numeros
-	if(valueNombre === '' && !('^[^0-9]+$'.test(valueNombre))) {
-		setErrorFor(inputNombre,'Nombre inválido')
-		nombreValid = false;
+	if(inputPais.classList.contains('invalid')) {
+		valid = false;
+	} 
+	
+	if(inputEstadoCivil.classList.contains('invalid')) {
+		valid = false;
+	} 
+	
+	if(inputTerminos.classList.contains('invalid')) {
+		valid = false;
+	} 
+	
+	if(valid === true) {
+		const myModal = new bootstrap.Modal(document.getElementById('modalValidar'), options)
+		myModal.show();
 	}
-	
-	//email: que sea un formato de email
-	const emailRegex = '/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/';
-	if(valueEmail === '' && !emailRegex.test(valueEmail)) {
-		setErrorFor(inputEmail,'Email inválido')
-		emailValid = false;
-	}
-	
-	//pais: que no venga vacio
-	if(valuePais === '') {
-		setErrorFor(inputPais,'Pais inválido')
-		paisValid = false;
-	}
-	
-	//estado civil: que no venga vacio
-	if(valueEstadoCivil === '') {
-		const control = inputEstadoCivil.parentElement.parentElement;
-		const small = control.querySelector('small');
-		
-		small.innerText = 'Estado Civil inválido';
-		control.className = 'mb-3 error';
-		estadoCivilValid = false;
-	}
-	
-	//terminos: que no venga vacio 
-	if(valueTerminos !== 'on') {
-		const controlT = inputTerminos.parentElement;
-		const small = controlT.querySelector('small');
-		
-		small.innerText = 'Debe Aceptar los Términos';
-		controlT.className = 'mb-3 form-check error';
-		terminosValud = false;
-	}
-	
-	//if(nombreValid && emailValid && paisValid && estadoCivilValid && terminosValid) {
-	//	let toggle = document.getElementById('myButton').data-bs-toggle;
-	//	toggle.setAttribute("data-bs-toggle","modal");
-	//} 
 }
-
-function setErrorFor(input, message) {
-	const controlI = input.parentElement;
-	const small = controlI.querySelector('small');
-	
-	small.innerText = message;
-	controlI.className = 'mb-3 error';
-}
-
-
-
 
