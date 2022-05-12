@@ -11,7 +11,7 @@
 	    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 	      <span class="navbar-toggler-icon"></span>
 	    </button>
-		    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+	    	<div class="collapse navbar-collapse" id="navbarSupportedContent">
 		      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
 			  	<% 
 	    			if(user != null) {
@@ -22,6 +22,13 @@
 			        <li class="nav-item">
 			          <a class="nav-link" href="<%=request.getContextPath()%>/controllers/NuevoProductoServlet">Nuevo Producto</a>
 			        </li>
+			        <li>
+			          <a class="btn btn-primary" 
+							role="button"
+							onclick="obtenerDatos()">
+							Abrir Modal
+					  </a>
+					</li>
 			    <%
 	    			}
 			    %>
@@ -47,4 +54,27 @@
 		    </div>
 	  </div>
 	</nav>
+	<!-- Modal -->
+	<div class="modal fade" id="modalAbrirTablas" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	  <div class="modal-dialog">
+	  	<form id="abrirModalForm">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <h5 class="modal-title" id="exampleModalLabel">Marcas y Categorias</h5>
+		        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+		      </div>
+		      <!-- Las tablas -->
+		      <div class="modal-body">
+		        ...
+		      </div>
+		      <!-- los botones -->
+		      <div class="modal-footer">
+		        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+		        <button type="button" class="btn btn-primary">Save changes</button>
+		      </div>
+		    </div>
+		</form>
+	  </div>
+	</div>
+	<script src="https://unpkg.com/axios/dist/axios.min.js"></script></body>
 </header>

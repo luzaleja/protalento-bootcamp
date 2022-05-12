@@ -1,7 +1,10 @@
 package ar.com.educacionit.servlet;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -9,50 +12,58 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import ar.com.educacionit.domain.Articulos;
-import ar.com.educacionit.services.ArticulosService;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+import ar.com.educacionit.domain.Categorias;
+import ar.com.educacionit.domain.Marcas;
+import ar.com.educacionit.services.CategoriaService;
+import ar.com.educacionit.services.MarcasService;
 import ar.com.educacionit.services.exceptions.ServiceException;
-import ar.com.educacionit.services.impl.ArticulosServiceImpl;
-import ar.com.educacionit.web.enums.ViewKeysEnum;
+import ar.com.educacionit.services.impl.CategoriaServiceImpl;
+import ar.com.educacionit.services.impl.MarcasServiceImpl;
 
 @WebServlet("/controllers/ListadoServlet")
 public class ListadoServlet extends HttpServlet {
-	//Los servlet no tienen el metodo main, porque no son de tipo consola
-	//sino web
-	//servlet es una clase java que atiende peticiones (requests)
 	
-	//el doPost es como el main 
+	CategoriaService catService = new CategoriaServiceImpl();
+	MarcasService marcaService = new MarcasServiceImpl();
 	
-	@Override
-	protected void doPost(HttpServletRequest entrada, HttpServletResponse salida) throws ServletException, IOException {
-		System.out.println("llegue al servlet /listado que escucha y atiende por POST");//esto imprime por consola
-		salida.getWriter().print("hola frontend, soy el backend y atendi tu solicitud por POST");//esto en el frontend
-	}
+	private ObjectMapper objectMapper = new ObjectMapper();
 	
 	@Override
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//instancio ArticulosService para poder llegar a la base de datos
-		//y traer la lista requerida
-		ArticulosService articuloService = new ArticulosServiceImpl();
-		
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
 		try {
-			List<Articulos> articulos = articuloService.findAll();
+			//obtener la lista de marcas
+			List<Marcas> marcas = this.marcaService.findAll();
+
+			//obtener la lista de categorias
+			List<Categorias> categorias = this.catService.findAll();
 			
-			//guardamos el listado en un lugar llamado "request"
-			request.setAttribute(ViewKeysEnum.LISTADO.getParam(), articulos);
+			Map<String,Object> listado = new HashMap<>();
+			listado.put("marcas", marcas);
+			listado.put("categorias", categorias);
 			
-			//ahora envia el request con el nuevo atributo, que es la lista
-			//de articulos, a la otra pagina
+			//convertimos a json
+			String json = objectMapper.writeValueAsString(listado);
 			
-			getServletContext().getRequestDispatcher("/listado.jsp").forward(request, response);
-			//getServletContext() lo tiene porque extiende de HttpServlet
-			//este encuentra el WebServlet de esta clase
-			//getRequestDispatcher() lleva dentro a donde se va a mandar el request 
-			//con el nuevo atributo
-			//como es .jsp sabemos que es codigo java que se compila y se muestra como html
-			//forward le esta diciendo que envia el request con el listado y la respuesta
-		} catch (ServiceException e) {
-			e.printStackTrace();
+			//escribo en el response el objeto
+			resp.getWriter().print(json);
+			
+		} catch (ServiceException se) {
+			//Si hay un error de conexion, mandamos un json con marcas y categorias vacias
+			List<Marcas> marcas = new ArrayList<>();
+			List<Categorias> categorias = new ArrayList<>();
+			
+			Map<String,Object> listado = new HashMap<>();
+			listado.put("marcas", marcas);
+			listado.put("categorias", categorias);
+			
+			//convertimos a json
+			String json = objectMapper.writeValueAsString(listado);
+			
+			//escribo en el response el objeto
+			resp.getWriter().print(json);
 		}
 	
 	
