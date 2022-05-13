@@ -56,10 +56,11 @@ public class GenerarArchivoErrorSevlet  extends HttpServlet{
 			//logica para descargar el archivo y que el navegador
 			//entienda que es un file
 			descargar(fileName, format, outputFile, resp);
+		} else {
+			req.setAttribute(ViewKeysEnum.ERROR_GENERAL.getParam(), "Sin datos...");
+			getServletContext().getRequestDispatcher(ViewEnums.RESULTADO_PREVIEW.getParam()).forward(req, resp);
 		}
 		
-		req.setAttribute(ViewKeysEnum.ERROR_GENERAL.getParam(), "Sin datos...");
-		getServletContext().getRequestDispatcher(ViewEnums.RESULTADO_PREVIEW.getParam()).forward(req, resp);
 	}
 
 	private void descargar(String fileName, String format, File outputFile, HttpServletResponse resp) throws IOException{

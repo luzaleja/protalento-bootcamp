@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import ar.com.educacionit.web.enums.ViewEnums;
 import ar.com.educacionit.web.enums.ViewKeysEnum;
 
 @WebServlet("/LogoutServlet")
@@ -20,6 +21,7 @@ public class LogoutServlet extends HttpServlet {
 		req.getSession().invalidate();
 		
 		//redirect al home
-		resp.sendRedirect(getServletContext().getContextPath());
+		//resp.sendRedirect(getServletContext().getContextPath());
+		getServletContext().getRequestDispatcher(ViewEnums.LOGIN.getParam()).forward(req, resp);;
 	}
 }
