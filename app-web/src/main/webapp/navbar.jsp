@@ -54,27 +54,59 @@
 		    </div>
 	  </div>
 	</nav>
-	<!-- Modal -->
-	<div class="modal fade" id="modalAbrirTablas" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-	  <div class="modal-dialog">
-	  	<form id="abrirModalForm">
-		    <div class="modal-content">
-		      <div class="modal-header">
-		        <h5 class="modal-title" id="exampleModalLabel">Marcas y Categorias</h5>
-		        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-		      </div>
-		      <!-- Las tablas -->
-		      <div class="modal-body">
-		        ...
-		      </div>
-		      <!-- los botones -->
-		      <div class="modal-footer">
-		        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-		        <button type="button" class="btn btn-primary">Save changes</button>
-		      </div>
-		    </div>
-		</form>
-	  </div>
-	</div>
-	<script src="https://unpkg.com/axios/dist/axios.min.js"></script></body>
 </header>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script type="text/javascript">
+	async function obtenerDatos() {
+		//Para abrir el modal despues
+		const options = {
+			keyboard: false
+		};
+		
+		let listadoJson = await axios.get('/controllers/ListadoServlet');
+	
+		listadoJson = listadoJson.data;
+		
+		const marcas = listadoJson.marcas;
+		llenarTablas()
+		
+		const categorias = listadoJson.categorias;
+		
+		//presentamos el modal con la informacion
+		const myModal = new bootstrap.Modal(document.getElementById('modalAbrirTablas'), options)
+		myModal.show();
+	}
+	
+	function llenarTablas() {
+		const table = document.getElementById('marcas');
+		
+		for(const linea of marcas) {
+			const fila = document.createElement('')
+		}
+	}
+</script>
+<!-- Modal -->
+<div class="modal fade" id="modalAbrirTablas" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+  	<form id="abrirModalForm">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <h5 class="modal-title" id="exampleModalLabel">Marcas y Categorias</h5>
+	        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+	      </div>
+	      <!-- Las tablas -->
+	      <div class="modal-body">
+	      	<table class="table" id="marcas">
+			</table>
+			<table class="table" id="categorias">
+			</table>
+	      </div>
+	      <!-- los botones -->
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+	        <button type="button" class="btn btn-primary">Save changes</button>
+	      </div>
+	    </div>
+	</form>
+  </div>
+</div>

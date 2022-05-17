@@ -1,4 +1,4 @@
-package ar.com.educacionit.servlet;
+package ar.com.educacionit.servlet.practicasemana19;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -22,7 +22,7 @@ import ar.com.educacionit.services.exceptions.ServiceException;
 import ar.com.educacionit.services.impl.CategoriaServiceImpl;
 import ar.com.educacionit.services.impl.MarcasServiceImpl;
 
-@WebServlet("/controllers/ListadoServlet")
+@WebServlet("/ListadoServlet")
 public class ListadoServlet extends HttpServlet {
 	
 	CategoriaService catService = new CategoriaServiceImpl();
